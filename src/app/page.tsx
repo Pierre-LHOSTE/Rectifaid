@@ -1,3 +1,10 @@
+"use client";
+import { Typography } from "antd";
+
 export default function Home() {
-	return <>App</>;
+	return (
+		<>
+			<Typography.Title>App</Typography.Title>
+		</>
+	);
 }

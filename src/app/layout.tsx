@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import type { ReactNode } from "react";
+import AntdLayout from "./antd";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -14,7 +15,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body>{children}</body>
+			<body>
+				<AntdLayout>{children}</AntdLayout>
+			</body>
 		</html>
 	);
 }
