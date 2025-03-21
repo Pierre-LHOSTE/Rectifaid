@@ -27,6 +27,7 @@ const en = {
 			description: "These changes significantly alter the text, improving its structure and style",
 		},
 	},
+	textInputPlaceholder: "Start typing…",
 } satisfies BaseTranslation;
 
 export default en;

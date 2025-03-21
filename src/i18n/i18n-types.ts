@@ -88,6 +88,10 @@ type RootTranslation = {
 			description: string
 		}
 	}
+	/**
+	 * S​t​a​r​t​ ​t​y​p​i​n​g​…
+	 */
+	textInputPlaceholder: string
 }
 
 export type TranslationFunctions = {
@@ -165,6 +169,10 @@ export type TranslationFunctions = {
 			description: () => LocalizedString
 		}
 	}
+	/**
+	 * Start typing…
+	 */
+	textInputPlaceholder: () => LocalizedString
 }
 
 export type Formatters = {}

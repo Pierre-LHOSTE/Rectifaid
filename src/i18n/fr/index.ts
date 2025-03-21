@@ -28,6 +28,7 @@ const fr = {
 			description: "Ici, on transforme le texte de manière plus significative",
 		},
 	},
+	textInputPlaceholder: "Commencez à écrire…",
 } satisfies Translation;
 
 export default fr;
