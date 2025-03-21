@@ -1,9 +1,10 @@
 import { Checkbox, type CheckboxChangeEvent, type GlobalToken, Typography, theme } from "antd";
 import "./card-select.scss";
-import type { CategoryType, CategoryOptions, SelectedOptionsType } from "@/types/options";
+import type { CategoryType, CategoryOptions } from "@/types/options";
 import { useOptionsStore } from "@/stores/options.store";
 import c from "classnames";
 import { useI18nContext } from "@/i18n/i18n-react";
+import { getActiveCategory } from "@/utils/getActiveCategory";
 
 const { useToken } = theme;
 
@@ -23,7 +24,7 @@ export default function CardSelect({
 	const { selectedOptions, selectOption, deselectOption, selectAllOptions, deselectAllOptions } =
 		useOptionsStore();
 
-	const selectedCard = getSelected(selectedOptions);
+	const selectedCard = getActiveCategory(selectedOptions);
 	const isSelected = selectedCard === id;
 
 	const isForcedSelected = getIsForcedSelected(id, selectedCard);
@@ -126,12 +127,6 @@ function getBorderColor(isSelected: boolean, isForcedSelected: boolean, token: G
 	if (isSelected) return token.colorPrimaryBorder;
 	if (isForcedSelected) return token.colorBgContainerDisabled;
 	return token.colorBorder;
-}
-
-function getSelected(selectedOptions: SelectedOptionsType): CategoryType {
-	if ((selectedOptions.heavy?.size ?? 0) > 0) return "heavy";
-	if ((selectedOptions.moderate?.size ?? 0) > 0) return "moderate";
-	return "minimal";
 }
 
 function getIsForcedSelected(id: CategoryType, selectedCard: CategoryType) {
