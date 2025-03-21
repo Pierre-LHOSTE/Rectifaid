@@ -28,7 +28,9 @@ export default function CardSelect({
 
 	const isForcedSelected = getIsForcedSelected(id, selectedCard);
 
-	const selectedOptionArray: CategoryOptions[] = Array.from(selectedOptions.get(id) || []);
+	const selectedOptionArray: CategoryOptions[] = selectedOptions[id]
+		? Array.from(selectedOptions[id] as Set<CategoryOptions>)
+		: [];
 
 	function handleCheckAll(e: CheckboxChangeEvent) {
 		e.stopPropagation();
@@ -55,7 +57,7 @@ export default function CardSelect({
 			return;
 		}
 
-		const size = selectedOptions.get(id)?.size ?? 0;
+		const size = selectedOptionArray.length;
 
 		if (e.target.checked || (size > 0 && size < options.length)) {
 			selectAllOptions(id);
@@ -127,8 +129,8 @@ function getBorderColor(isSelected: boolean, isForcedSelected: boolean, token: G
 }
 
 function getSelected(selectedOptions: SelectedOptionsType): CategoryType {
-	if ((selectedOptions.get("heavy")?.size ?? 0) > 0) return "heavy";
-	if ((selectedOptions.get("moderate")?.size ?? 0) > 0) return "moderate";
+	if ((selectedOptions.heavy?.size ?? 0) > 0) return "heavy";
+	if ((selectedOptions.moderate?.size ?? 0) > 0) return "moderate";
 	return "minimal";
 }
 

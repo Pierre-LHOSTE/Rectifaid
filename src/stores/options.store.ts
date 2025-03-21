@@ -13,42 +13,44 @@ interface StoreType {
 }
 
 export const useOptionsStore = create<StoreType>((set) => ({
-	selectedOptions: new Map([
-		["minimal", new Set(["spelling", "punctuation", "anglicisms"])],
-		["moderate", new Set([])],
-		["heavy", new Set([])],
-	]),
-
+	selectedOptions: {
+		minimal: new Set(["spelling", "punctuation", "anglicisms"]),
+		moderate: new Set([]),
+		heavy: new Set([]),
+	},
 	selectOption: (category: CategoryType, option: CategoryOptions) => {
 		set((state) => {
-			const newCardOptions = new Map(state.selectedOptions);
-			newCardOptions.get(category)?.add(option);
-			if (category === "heavy" && state.selectedOptions.get("moderate")?.size === 0) {
+			const newCardOptions = { ...state.selectedOptions };
+			if (!newCardOptions[category].has(option)) {
+				newCardOptions[category].add(option);
+			}
+			if (category === "heavy" && newCardOptions.moderate.size === 0) {
 				const moderateOptions = optionDefinitions.moderate;
-				newCardOptions.set("moderate", new Set(moderateOptions));
+				newCardOptions.moderate = new Set(moderateOptions);
 			}
 			return { selectedOptions: newCardOptions };
 		});
 	},
+
 	deselectOption: (category: CategoryType, option: CategoryOptions) => {
 		set((state) => {
-			if (category === "minimal" && state.selectedOptions.get(category)?.size === 1) {
+			if (category === "minimal" && state.selectedOptions[category].size === 1) {
 				return state;
 			}
-			const newCardOptions = new Map(state.selectedOptions);
-			newCardOptions.get(category)?.delete(option);
+			const newCardOptions = { ...state.selectedOptions };
+			newCardOptions[category].delete(option);
 			return { selectedOptions: newCardOptions };
 		});
 	},
 
 	selectAllOptions: (category: CategoryType) => {
 		set((state) => {
-			const newCardOptions = new Map(state.selectedOptions);
+			const newCardOptions = { ...state.selectedOptions };
 			const options = optionDefinitions[category];
-			newCardOptions.set(category, new Set(options));
-			if (category === "heavy" && state.selectedOptions.get("moderate")?.size === 0) {
+			newCardOptions[category] = new Set(options);
+			if (category === "heavy" && newCardOptions.moderate.size === 0) {
 				const moderateOptions = optionDefinitions.moderate;
-				newCardOptions.set("moderate", new Set(moderateOptions));
+				newCardOptions.moderate = new Set(moderateOptions);
 			}
 			return { selectedOptions: newCardOptions };
 		});
@@ -56,11 +58,11 @@ export const useOptionsStore = create<StoreType>((set) => ({
 
 	deselectAllOptions: (category: CategoryType) => {
 		set((state) => {
-			const newCardOptions = new Map(state.selectedOptions);
+			const newCardOptions = { ...state.selectedOptions };
 			if (category === "minimal") {
-				newCardOptions.set(category, new Set(["spelling"]));
+				newCardOptions[category] = new Set(["spelling"]);
 			} else {
-				newCardOptions.set(category, new Set());
+				newCardOptions[category] = new Set();
 			}
 			return { selectedOptions: newCardOptions };
 		});
