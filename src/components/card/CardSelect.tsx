@@ -58,7 +58,9 @@ export default function CardSelect({
 			return;
 		}
 
-		if (e.target.checked) {
+		const size = selectedOptions.get(id)?.size ?? 0;
+
+		if (e.target.checked || (size > 0 && size < options.length)) {
 			selectAllOptions(id);
 		} else {
 			deselectAllOptions(id);

@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, test } from "@jest/globals";
 import { useOptionsStore } from "./options.store";
 import { renderHook, act } from "@testing-library/react";
+import type { CategoryOptions } from "@/types/options";
 
 describe("minimal card tests", () => {
 	beforeEach(() => {
@@ -91,6 +92,77 @@ describe("minimal card tests", () => {
 		const { result } = renderHook(() => useOptionsStore());
 		act(() => {
 			result.current.deselectAllOptions("minimal");
+		});
+		const selectedOptions = result.current.selectedOptions;
+		expect(selectedOptions).toEqual(
+			new Map([
+				["minimal", new Set(["spelling"])],
+				["moderate", new Set([])],
+				["heavy", new Set([])],
+			])
+		);
+	});
+
+	test("when selecting moderate card with all options, minimal and moderate should be selected with all moderate options", () => {
+		const { result } = renderHook(() => useOptionsStore());
+		act(() => {
+			result.current.selectAllOptions("moderate");
+		});
+		const selectedOptions = result.current.selectedOptions;
+		expect(selectedOptions).toEqual(
+			new Map([
+				["minimal", new Set(["spelling"])],
+				["moderate", new Set(["fluidity", "heaviness", "repetitions"])],
+				["heavy", new Set([])],
+			])
+		);
+	});
+});
+
+describe("moderate card tests", () => {
+	beforeEach(() => {
+		useOptionsStore.setState({
+			selectedOptions: new Map([
+				["minimal", new Set(["spelling"]) as Set<CategoryOptions>],
+				["moderate", new Set(["fluidity"]) as Set<CategoryOptions>],
+				["heavy", new Set([])],
+			]),
+		});
+	});
+
+	test("when selecting an option, it should be added to selectedOptions", () => {
+		const { result } = renderHook(() => useOptionsStore());
+		act(() => {
+			result.current.selectOption("moderate", "repetitions");
+		});
+		const selectedOptions = result.current.selectedOptions;
+		expect(selectedOptions).toEqual(
+			new Map([
+				["minimal", new Set(["spelling"])],
+				["moderate", new Set(["fluidity", "repetitions"])],
+				["heavy", new Set([])],
+			])
+		);
+	});
+
+	test("when deselecting all options with deselectAllOptions, the new selected card is minimal", () => {
+		const { result } = renderHook(() => useOptionsStore());
+		act(() => {
+			result.current.deselectAllOptions("moderate");
+		});
+		const selectedOptions = result.current.selectedOptions;
+		expect(selectedOptions).toEqual(
+			new Map([
+				["minimal", new Set(["spelling"])],
+				["moderate", new Set([])],
+				["heavy", new Set([])],
+			])
+		);
+	});
+	test("when deselecting all options with deselectOption, the new selected card is minimal", () => {
+		const { result } = renderHook(() => useOptionsStore());
+		act(() => {
+			result.current.deselectOption("moderate", "fluidity");
 		});
 		const selectedOptions = result.current.selectedOptions;
 		expect(selectedOptions).toEqual(

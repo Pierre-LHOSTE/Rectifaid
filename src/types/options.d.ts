@@ -1,7 +1,8 @@
 import type { optionDefinitions } from "@/config/options";
 
-export type OptionDefinitions = typeof optionDefinitions;
-export type CategoryType = keyof OptionDefinitions;
-export type CategoryOptions<T extends CategoryType = CategoryType> = OptionDefinitions[T][number];
+type OptionDefinitionsType = typeof optionDefinitions;
+
+export type CategoryType = keyof OptionDefinitionsType;
+export type CategoryOptions = OptionDefinitionsType[CategoryType][number];
 
 export type SelectedOptionsType = Map<CategoryType, Set<CategoryOptions>>;
