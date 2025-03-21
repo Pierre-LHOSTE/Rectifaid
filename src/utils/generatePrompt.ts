@@ -56,13 +56,12 @@ After applying the necessary modifications, return the response in the following
   ]
 }
 Where:
-- <original_phrase> and <corrected_phrase> should contain only the relevant part of the sentence that was modified, with enough context to remain understandable.
-- The "why’ field must briefly explain the correction in a simple and easy-to-understand way. The explanation should be short, not too complex, and include a striking and memorable tip. For example:
-  - "Ses à moi" → "C’est à moi", Tip: You can replace "ses" with "ceci est". If the sentence still makes sense, it’s "c’est" (short for "ceci est").
-  - "J’aime mais chats" → "J’aime mes chats", Tip: Try adding "à moi" at the end: "J’aime mes chats à moi". Since it shows possession, it’s "mes" and not "mais", which expresses contrast.
-- The explanation and tip can be combined for clarity, as in the second example.”
-- The response, explanations, and tips must be in the same language as the text being corrected.
-
+- The "from" and "to" fields should contain only the relevant part of the sentence that was modified, with enough context to remain understandable.
+- The "why" field must briefly explain why the correction is necessary in a simple and easy-to-understand way. The explanation should be short and not too complex. Use the same language as the original text.
+- The "tip" field should provide a striking and memorable tip to help remember the applicable rule or principle, also in the same language as the original text.
+  Examples:
+  - To distinguish between "it's" and "its", use this tip: replace "it's" with "it is" or "it has". If the sentence still makes sense, then "it's" is correct. Example: "It's raining" becomes "It is raining."
+  - For distinguishing between "c'est" and "ses" in French, replace "c'est" with "cela est". If the sentence is still logical, then "c'est" is correct. Example: "C'est à moi" becomes "Cela est à moi."
 
 Here is the text to process:
 <text>
