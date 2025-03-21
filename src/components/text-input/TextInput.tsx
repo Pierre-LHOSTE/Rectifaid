@@ -1,5 +1,5 @@
 import { useI18nContext } from "@/i18n/i18n-react";
-import { Button, Input } from "antd";
+import { Button, Input, Typography } from "antd";
 import "./text-input.scss";
 import correctText from "@/server/correctText";
 import { useState } from "react";
@@ -23,13 +23,26 @@ export default function TextInput() {
 					setText(e.target.value);
 				}}
 			/>
-			<Button
-				onClick={() => {
-					correctText(text, selectedOptions);
-				}}
-			>
-				{LL.correctTextButton()}
-			</Button>
+			<div id="input-details">
+				<div id="input-details-stats">
+					<Typography.Text type="secondary">
+						{/* biome-ignore lint/nursery/useConsistentCurlyBraces: Need space between words */}
+						{LL.inputDetails.stats.characters(text.length)} •{" "}
+						{/* biome-ignore lint/nursery/useConsistentCurlyBraces: Need space between words */}
+						{LL.inputDetails.stats.words(text.split(" ").filter((l) => l).length)} •{" "}
+						{LL.inputDetails.stats.lines(text.split("\n").length)}
+					</Typography.Text>
+				</div>
+
+				<Button
+					onClick={() => {
+						correctText(text, selectedOptions);
+					}}
+					type="primary"
+				>
+					{LL.correctTextButton()}
+				</Button>
+			</div>
 		</div>
 	);
 }

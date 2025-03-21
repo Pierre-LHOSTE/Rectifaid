@@ -30,6 +30,13 @@ const fr = {
 	},
 	textInputPlaceholder: "Commencez à écrire…",
 	correctTextButton: "Corriger le texte",
+	inputDetails: {
+		stats: {
+			characters: "{0} caractère{{s}}",
+			words: "{0} mot{{s}}",
+			lines: "{0} ligne{{s}}",
+		},
+	},
 } satisfies Translation;
 
 export default fr;

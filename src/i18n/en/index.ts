@@ -29,6 +29,13 @@ const en = {
 	},
 	textInputPlaceholder: "Start typing…",
 	correctTextButton: "Correct text",
+	inputDetails: {
+		stats: {
+			characters: "{0:number} character{{s}}",
+			words: "{0:number} word{{s}}",
+			lines: "{0:number} line{{s}}",
+		},
+	},
 } satisfies BaseTranslation;
 
 export default en;
