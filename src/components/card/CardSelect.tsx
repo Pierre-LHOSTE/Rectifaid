@@ -31,15 +31,40 @@ export default function CardSelect({
 
 	function handleCardSelection(e: React.KeyboardEvent | React.MouseEvent, id: CategoryType) {
 		if ("key" in e && e.key !== "Enter" && e.key !== " ") return;
-		console.log("Card selected:", id);
 	}
 
 	function handleCheckAll(e: CheckboxChangeEvent) {
 		e.stopPropagation();
+
+		if (!isSelected) {
+			switch (id) {
+				case "minimal":
+					deselectAllOptions("moderate");
+					deselectAllOptions("heavy");
+					selectAllOptions("minimal");
+					break;
+				case "moderate":
+					deselectAllOptions("heavy");
+					selectAllOptions("moderate");
+					break;
+
+				case "heavy":
+					selectAllOptions("heavy");
+					break;
+
+				default:
+					break;
+			}
+			return;
+		}
+
 		if (e.target.checked) {
 			selectAllOptions(id);
 		} else {
 			deselectAllOptions(id);
+			if (selectedCard === "minimal") {
+				selectOption("minimal", "spelling");
+			}
 		}
 	}
 
@@ -47,9 +72,14 @@ export default function CardSelect({
 		e.stopPropagation();
 
 		if (e.target.checked) {
-			selectOption(id, value);
+			return selectOption(id, value);
 		}
-		if (!e.target.checked && selectedOptionArray.length > 1) {
+
+		if (id === "minimal") {
+			if (!e.target.checked && selectedOptionArray.length > 1) {
+				deselectOption(id, value);
+			}
+		} else {
 			deselectOption(id, value);
 		}
 	}
@@ -75,7 +105,8 @@ export default function CardSelect({
 				<Checkbox
 					checked={isSelected || isForcedSelected}
 					indeterminate={
-						selectedOptionArray.length > 0 && selectedOptionArray.length < options.length
+						(selectedOptionArray.length > 0 || isForcedSelected) &&
+						selectedOptionArray.length < options.length
 					}
 					onChange={handleCheckAll}
 					onClick={handleStopPropagation}

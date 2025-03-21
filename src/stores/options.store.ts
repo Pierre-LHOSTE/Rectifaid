@@ -43,10 +43,11 @@ export const useOptionsStore = create<StoreType>((set) => ({
 		});
 	},
 
-	deselectAllOptions: (category: CategoryType) =>
+	deselectAllOptions: (category: CategoryType) => {
 		set((state) => {
 			const newCardOptions = new Map(state.selectedOptions);
 			newCardOptions.set(category, new Set());
 			return { selectedOptions: newCardOptions };
-		}),
+		});
+	},
 }));
