@@ -62,27 +62,14 @@ export default function CardSelect({
 			selectAllOptions(id);
 		} else {
 			deselectAllOptions(id);
-			if (selectedCard === "minimal") {
-				selectOption("minimal", "spelling");
-			}
 		}
 	}
 
-	function handleCheckbox(e: CheckboxChangeEvent, id: CategoryType, value: CategoryOptions) {
+	const handleCheckbox = (e: CheckboxChangeEvent, id: CategoryType, value: CategoryOptions) => {
 		e.stopPropagation();
 
-		if (e.target.checked) {
-			return selectOption(id, value);
-		}
-
-		if (id === "minimal") {
-			if (!e.target.checked && selectedOptionArray.length > 1) {
-				deselectOption(id, value);
-			}
-		} else {
-			deselectOption(id, value);
-		}
-	}
+		e.target.checked ? selectOption(id, value) : deselectOption(id, value);
+	};
 
 	function handleStopPropagation(e: {
 		stopPropagation: () => void;

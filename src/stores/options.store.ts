@@ -28,6 +28,9 @@ export const useOptionsStore = create<StoreType>((set) => ({
 	},
 	deselectOption: (category: CategoryType, option: CategoryOptions) => {
 		set((state) => {
+			if (category === "minimal" && state.selectedOptions.get(category)?.size === 1) {
+				return state;
+			}
 			const newCardOptions = new Map(state.selectedOptions);
 			newCardOptions.get(category)?.delete(option);
 			return { selectedOptions: newCardOptions };
@@ -46,7 +49,11 @@ export const useOptionsStore = create<StoreType>((set) => ({
 	deselectAllOptions: (category: CategoryType) => {
 		set((state) => {
 			const newCardOptions = new Map(state.selectedOptions);
-			newCardOptions.set(category, new Set());
+			if (category === "minimal") {
+				newCardOptions.set(category, new Set(["spelling"]));
+			} else {
+				newCardOptions.set(category, new Set());
+			}
 			return { selectedOptions: newCardOptions };
 		});
 	},
