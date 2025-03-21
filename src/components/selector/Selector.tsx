@@ -12,7 +12,7 @@ export default function Selector() {
 	const { LL } = useI18nContext();
 
 	return (
-		<div id="selector" style={{ backgroundColor: token.colorBgContainer }}>
+		<div id="selector" style={{ borderColor: token.colorBorder }}>
 			<CardSelect
 				title={LL.card.minimal.title()}
 				description={LL.card.minimal.description()}
