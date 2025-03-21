@@ -14,13 +14,13 @@ const preview: Preview = {
 				color: /(background|color)$/i,
 				date: /Date$/i,
 			},
-			backgrounds: {
-				default: isDarkTheme ? "dark" : "light",
-				values: [
-					{ name: "light", value: "#F4F4F4" },
-					{ name: "dark", value: "#13161c" },
-				],
-			},
+		},
+		backgrounds: {
+			default: isDarkTheme ? "dark" : "light",
+			values: [
+				{ name: "light", value: "#F4F4F4" },
+				{ name: "dark", value: "#13161c" },
+			],
 		},
 		nextjs: {
 			appDirectory: true,

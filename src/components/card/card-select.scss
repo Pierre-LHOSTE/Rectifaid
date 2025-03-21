@@ -1,0 +1,28 @@
+.card-select {
+  max-width: 350px;
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+
+  border-width: 1px;
+  border-style: solid;
+
+  h4 {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .card-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &.selected {
+    padding: 15px;
+    border-width: 2px;
+  }
+}

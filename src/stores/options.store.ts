@@ -1,9 +1,9 @@
-import type { CategoryOptions, CategoryType } from "@/types/options";
+import type { CategoryOptions, CategoryType, SelectedOptionsType } from "@/types/options";
 import { create } from "zustand";
 import { optionDefinitions } from "@/config/options";
 
 interface StoreType {
-	selectedOptions: Map<CategoryType, Set<CategoryOptions>>;
+	selectedOptions: SelectedOptionsType;
 
 	selectOption: (category: CategoryType, option: CategoryOptions) => void;
 	deselectOption: (category: CategoryType, option: CategoryOptions) => void;
