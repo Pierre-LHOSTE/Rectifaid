@@ -32,6 +32,9 @@ importers:
       sass:
         specifier: ^1.86.0
         version: 1.86.0
+      typesafe-i18n:
+        specifier: ^5.26.2
+        version: 5.26.2(typescript@5.8.2)
       zustand:
         specifier: ^5.0.3
         version: 5.0.3(@types/react@19.0.12)(react@19.0.0)
@@ -4389,6 +4392,12 @@ packages:
   type-fest@2.19.0:
     resolution: {integrity: sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==}
     engines: {node: '>=12.20'}
+
+  typesafe-i18n@5.26.2:
+    resolution: {integrity: sha512-2QAriFmiY5JwUAJtG7yufoE/XZ1aFBY++wj7YFS2yo89a3jLBfKoWSdq5JfQYk1V2BS7V2c/u+KEcaCQoE65hw==}
+    hasBin: true
+    peerDependencies:
+      typescript: '>=3.5.1'
 
   typescript@5.8.2:
     resolution: {integrity: sha512-aJn6wq13/afZp/jT9QZmwEjDqqvSGp1VT5GVg+f/t6/oVyrgXM6BY1h9BRh/O5p3PlUPAe+WuiEZOmb/49RqoQ==}
@@ -9683,6 +9692,10 @@ snapshots:
   type-fest@0.21.3: {}
 
   type-fest@2.19.0: {}
+
+  typesafe-i18n@5.26.2(typescript@5.8.2):
+    dependencies:
+      typescript: 5.8.2
 
   typescript@5.8.2: {}
 

@@ -9,7 +9,8 @@
 		"lint": "next lint",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build",
-		"test": "jest --watch"
+		"test": "jest --watch",
+		"typesafe-i18n": "typesafe-i18n"
 	},
 	"dependencies": {
 		"@ant-design/nextjs-registry": "^1.0.2",
@@ -20,6 +21,7 @@
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
 		"sass": "^1.86.0",
+		"typesafe-i18n": "^5.26.2",
 		"zustand": "^5.0.3"
 	},
 	"devDependencies": {

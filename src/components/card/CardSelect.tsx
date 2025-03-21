@@ -3,6 +3,7 @@ import "./card-select.scss";
 import type { CategoryType, CategoryOptions, SelectedOptionsType } from "@/types/options";
 import { useOptionsStore } from "@/stores/options.store";
 import c from "classnames";
+import { useI18nContext } from "@/i18n/i18n-react";
 
 const { useToken } = theme;
 
@@ -17,6 +18,7 @@ export default function CardSelect({
 	options: CategoryOptions[];
 	id: CategoryType;
 }) {
+	const { LL } = useI18nContext();
 	const { token } = useToken();
 	const { selectedOptions, selectOption, deselectOption, selectAllOptions, deselectAllOptions } =
 		useOptionsStore();
@@ -104,7 +106,7 @@ export default function CardSelect({
 						onClick={handleStopPropagation}
 						onChange={(e) => handleCheckbox(e, id, value)}
 					>
-						<Typography.Text onClick={handleStopPropagation}>{value}</Typography.Text>
+						<Typography.Text onClick={handleStopPropagation}>{LL.options[value]()}</Typography.Text>
 					</Checkbox>
 				))}
 			</div>

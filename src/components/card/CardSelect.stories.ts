@@ -18,7 +18,7 @@ export const Selected: Story = {
 		title: "Title",
 		description:
 			"A long description that should be displayed in the card body. It should be long enough to wrap to multiple lines.",
-		options: ["anglicisms", "enrich"],
+		options: ["spelling", "punctuation", "anglicisms"],
 		id: "minimal",
 	},
 };
