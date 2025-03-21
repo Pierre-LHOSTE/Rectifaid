@@ -14,6 +14,15 @@ describe("generatePrompt tests", () => {
 Act as a professional proofreader, editor, and writing assistant. Your task is to carefully analyze and correct or improve a given text while strictly adhering to the following rules:
 
 - Correct all spelling mistakes.
+- Do not correct punctuation errors.
+- Do not correct anglicisms.
+- Do not smooth out sentences.
+- Do not remove repetitions.
+- Do not simplify heavy structures.
+- Do not rephrase sentences.
+- Do not reorganize ideas.
+- Do not restructure paragraphs.
+- Do not enrich vocabulary.
 
 Formatting rules:
 - Correct only the errors without altering the style or structure; ensure the original format is preserved as closely as possible.
@@ -60,7 +69,15 @@ Ensure that every correction is clearly explained in the “explanations” arra
 Act as a professional proofreader, editor, and writing assistant. Your task is to carefully analyze and correct or improve a given text while strictly adhering to the following rules:
 
 - Correct all spelling mistakes.
+- Do not correct punctuation errors.
+- Do not correct anglicisms.
 - Smooth out sentences.
+- Do not remove repetitions.
+- Do not simplify heavy structures.
+- Do not rephrase sentences.
+- Do not reorganize ideas.
+- Do not restructure paragraphs.
+- Do not enrich vocabulary.
 
 Formatting rules:
 - Maintain the original formatting as much as possible.
@@ -107,7 +124,15 @@ Ensure that every correction is clearly explained in the “explanations” arra
 Act as a professional proofreader, editor, and writing assistant. Your task is to carefully analyze and correct or improve a given text while strictly adhering to the following rules:
 
 - Correct all spelling mistakes.
+- Do not correct punctuation errors.
+- Do not correct anglicisms.
+- Do not smooth out sentences.
+- Do not remove repetitions.
+- Do not simplify heavy structures.
+- Do not rephrase sentences.
+- Do not reorganize ideas.
 - Restructure paragraphs to enhance readability.
+- Do not enrich vocabulary.
 
 Formatting rules:
 - Ensure the corrected text remains natural and appropriate for the intended audience.
@@ -153,7 +178,15 @@ Ensure that every correction is clearly explained in the “explanations” arra
 Act as a professional proofreader, editor, and writing assistant. Your task is to carefully analyze and correct or improve a given text while strictly adhering to the following rules:
 
 - Correct all spelling mistakes.
+- Do not correct punctuation errors.
+- Do not correct anglicisms.
 - Smooth out sentences.
+- Do not remove repetitions.
+- Do not simplify heavy structures.
+- Do not rephrase sentences.
+- Do not reorganize ideas.
+- Do not restructure paragraphs.
+- Do not enrich vocabulary.
 
 Formatting rules:
 - Maintain the original formatting as much as possible.

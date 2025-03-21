@@ -27,7 +27,17 @@ export default function generatePrompt(text: string, options: SelectedOptionsTyp
 
 	const prompt = `
 Act as a professional proofreader, editor, and writing assistant. Your task is to carefully analyze and correct or improve a given text while strictly adhering to the following rules:
-${isSelected("spelling") ? "\n- Correct all spelling mistakes." : ""}${isSelected("punctuation") ? "\n- Fix punctuation errors." : ""}${isSelected("anglicisms") ? "\n- Replace anglicisms with proper alternatives." : ""}${isSelected("fluidity") ? "\n- Smooth out sentences." : ""}${isSelected("repetitions") ? "\n- Remove redundant words or phrases." : ""}${isSelected("heaviness") ? "\n- Simplify unnecessarily complex structures." : ""}${isSelected("rephrase") ? "\n- Rephrase awkward or unclear sentences." : ""}${isSelected("reorganize") ? "\n- Reorganize ideas for better clarity and impact." : ""}${isSelected("restructure") ? "\n- Restructure paragraphs to enhance readability." : ""}${isSelected("enrich") ? "\n- Enrich vocabulary with more precise or varied word choices." : ""}
+
+- ${isSelected("spelling") ? "Correct all spelling mistakes." : "Do not correct spelling mistakes."}
+- ${isSelected("punctuation") ? "Fix punctuation errors." : "Do not correct punctuation errors."}
+- ${isSelected("anglicisms") ? "Replace anglicisms with proper alternatives." : "Do not correct anglicisms."}
+- ${isSelected("fluidity") ? "Smooth out sentences." : "Do not smooth out sentences."}
+- ${isSelected("repetitions") ? "Remove redundant words or phrases." : "Do not remove repetitions."}
+- ${isSelected("heaviness") ? "Simplify unnecessarily complex structures." : "Do not simplify heavy structures."}
+- ${isSelected("rephrase") ? "Rephrase awkward or unclear sentences." : "Do not rephrase sentences."}
+- ${isSelected("reorganize") ? "Reorganize ideas for better clarity and impact." : "Do not reorganize ideas."}
+- ${isSelected("restructure") ? "Restructure paragraphs to enhance readability." : "Do not restructure paragraphs."}
+- ${isSelected("enrich") ? "Enrich vocabulary with more precise or varied word choices." : "Do not enrich vocabulary."}
 
 Formatting rules:${primaryRule.length > 0 ? `\n- ${primaryRule}` : ""}
 - Ensure the corrected text remains natural and appropriate for the intended audience.
