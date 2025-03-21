@@ -28,6 +28,7 @@ const en = {
 		},
 	},
 	textInputPlaceholder: "Start typing…",
+	correctTextButton: "Correct text",
 } satisfies BaseTranslation;
 
 export default en;

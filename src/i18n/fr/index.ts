@@ -29,6 +29,7 @@ const fr = {
 		},
 	},
 	textInputPlaceholder: "Commencez à écrire…",
+	correctTextButton: "Corriger le texte",
 } satisfies Translation;
 
 export default fr;

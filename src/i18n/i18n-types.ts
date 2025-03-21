@@ -92,6 +92,10 @@ type RootTranslation = {
 	 * S​t​a​r​t​ ​t​y​p​i​n​g​…
 	 */
 	textInputPlaceholder: string
+	/**
+	 * C​o​r​r​e​c​t​ ​t​e​x​t
+	 */
+	correctTextButton: string
 }
 
 export type TranslationFunctions = {
@@ -173,6 +177,10 @@ export type TranslationFunctions = {
 	 * Start typing…
 	 */
 	textInputPlaceholder: () => LocalizedString
+	/**
+	 * Correct text
+	 */
+	correctTextButton: () => LocalizedString
 }
 
 export type Formatters = {}
