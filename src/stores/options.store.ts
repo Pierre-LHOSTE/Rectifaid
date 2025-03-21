@@ -23,6 +23,10 @@ export const useOptionsStore = create<StoreType>((set) => ({
 		set((state) => {
 			const newCardOptions = new Map(state.selectedOptions);
 			newCardOptions.get(category)?.add(option);
+			if (category === "heavy" && state.selectedOptions.get("moderate")?.size === 0) {
+				const moderateOptions = optionDefinitions.moderate;
+				newCardOptions.set("moderate", new Set(moderateOptions));
+			}
 			return { selectedOptions: newCardOptions };
 		});
 	},
@@ -42,6 +46,10 @@ export const useOptionsStore = create<StoreType>((set) => ({
 			const newCardOptions = new Map(state.selectedOptions);
 			const options = optionDefinitions[category];
 			newCardOptions.set(category, new Set(options));
+			if (category === "heavy" && state.selectedOptions.get("moderate")?.size === 0) {
+				const moderateOptions = optionDefinitions.moderate;
+				newCardOptions.set("moderate", new Set(moderateOptions));
+			}
 			return { selectedOptions: newCardOptions };
 		});
 	},

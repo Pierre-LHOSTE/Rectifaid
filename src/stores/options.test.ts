@@ -117,6 +117,36 @@ describe("minimal card tests", () => {
 			])
 		);
 	});
+
+	test("when selecting all options heavy card, moderate and heavy should be selected with all options", () => {
+		const { result } = renderHook(() => useOptionsStore());
+		act(() => {
+			result.current.selectAllOptions("heavy");
+		});
+		const selectedOptions = result.current.selectedOptions;
+		expect(selectedOptions).toEqual(
+			new Map([
+				["minimal", new Set(["spelling"])],
+				["moderate", new Set(["fluidity", "heaviness", "repetitions"])],
+				["heavy", new Set(["rephrase", "reorganize", "restructure", "enrich"])],
+			])
+		);
+	});
+
+	test("when selecting on option heavy card, moderate and heavy should be selected with all options", () => {
+		const { result } = renderHook(() => useOptionsStore());
+		act(() => {
+			result.current.selectOption("heavy", "reorganize");
+		});
+		const selectedOptions = result.current.selectedOptions;
+		expect(selectedOptions).toEqual(
+			new Map([
+				["minimal", new Set(["spelling"])],
+				["moderate", new Set(["fluidity", "heaviness", "repetitions"])],
+				["heavy", new Set(["reorganize"])],
+			])
+		);
+	});
 });
 
 describe("moderate card tests", () => {

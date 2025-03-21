@@ -2,7 +2,6 @@ import { Checkbox, type CheckboxChangeEvent, type GlobalToken, Typography, theme
 import "./card-select.scss";
 import type { CategoryType, CategoryOptions, SelectedOptionsType } from "@/types/options";
 import { useOptionsStore } from "@/stores/options.store";
-import type React from "react";
 import c from "classnames";
 
 const { useToken } = theme;
@@ -28,10 +27,6 @@ export default function CardSelect({
 	const isForcedSelected = getIsForcedSelected(id, selectedCard);
 
 	const selectedOptionArray: CategoryOptions[] = Array.from(selectedOptions.get(id) || []);
-
-	function handleCardSelection(e: React.KeyboardEvent | React.MouseEvent, id: CategoryType) {
-		if ("key" in e && e.key !== "Enter" && e.key !== " ") return;
-	}
 
 	function handleCheckAll(e: CheckboxChangeEvent) {
 		e.stopPropagation();
@@ -80,15 +75,12 @@ export default function CardSelect({
 	}
 
 	return (
-		// biome-ignore lint/nursery/noStaticElementInteractions: <explanation>
 		<div
 			className={c("card-select", { selected: isSelected })}
 			style={{
 				backgroundColor: getBackgroundColor(isSelected, isForcedSelected, token),
 				borderColor: getBorderColor(isSelected, isForcedSelected, token),
 			}}
-			onClick={(e) => handleCardSelection(e, id)}
-			onKeyUp={(e) => handleCardSelection(e, id)}
 		>
 			<Typography.Title level={4}>
 				<Checkbox
