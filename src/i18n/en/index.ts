@@ -28,12 +28,15 @@ const en = {
 		},
 	},
 	textInputPlaceholder: "Start typing…",
-	correctTextButton: "Correct text",
-	inputDetails: {
+	textDetails: {
 		stats: {
 			characters: "{0:number} character{{s}}",
 			words: "{0:number} word{{s}}",
 			lines: "{0:number} line{{s}}",
+		},
+		actions: {
+			correct: "Correct text",
+			copy: "Copy",
 		},
 	},
 } satisfies BaseTranslation;

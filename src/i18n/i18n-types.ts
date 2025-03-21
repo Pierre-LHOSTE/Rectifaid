@@ -92,11 +92,7 @@ type RootTranslation = {
 	 * S​t​a​r​t​ ​t​y​p​i​n​g​…
 	 */
 	textInputPlaceholder: string
-	/**
-	 * C​o​r​r​e​c​t​ ​t​e​x​t
-	 */
-	correctTextButton: string
-	inputDetails: {
+	textDetails: {
 		stats: {
 			/**
 			 * {​0​}​ ​c​h​a​r​a​c​t​e​r​{​{​s​}​}
@@ -113,6 +109,16 @@ type RootTranslation = {
 			 * @param {number} 0
 			 */
 			lines: RequiredParams<'0'>
+		}
+		actions: {
+			/**
+			 * C​o​r​r​e​c​t​ ​t​e​x​t
+			 */
+			correct: string
+			/**
+			 * C​o​p​y
+			 */
+			copy: string
 		}
 	}
 }
@@ -196,11 +202,7 @@ export type TranslationFunctions = {
 	 * Start typing…
 	 */
 	textInputPlaceholder: () => LocalizedString
-	/**
-	 * Correct text
-	 */
-	correctTextButton: () => LocalizedString
-	inputDetails: {
+	textDetails: {
 		stats: {
 			/**
 			 * {0} character{{s}}
@@ -214,6 +216,16 @@ export type TranslationFunctions = {
 			 * {0} line{{s}}
 			 */
 			lines: (arg0: number) => LocalizedString
+		}
+		actions: {
+			/**
+			 * Correct text
+			 */
+			correct: () => LocalizedString
+			/**
+			 * Copy
+			 */
+			copy: () => LocalizedString
 		}
 	}
 }

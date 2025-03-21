@@ -1,0 +1,15 @@
+.text-details {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    > * {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        padding: 0 8px;
+    }
+
+}

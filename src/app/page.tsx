@@ -4,6 +4,7 @@ import Selector from "@/components/selector/Selector";
 import TextInput from "@/components/text-input/TextInput";
 import { theme } from "antd";
 import "./root.scss";
+import TextOutput from "@/components/text-output/TextOutput";
 
 const { useToken } = theme;
 
@@ -17,7 +18,7 @@ export default function Home() {
 				<div id="content">
 					<section id="top">
 						<TextInput />
-						<p>result</p>
+						<TextOutput />
 					</section>
 					<section id="bottom">
 						<p>explanation</p>

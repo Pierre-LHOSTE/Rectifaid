@@ -29,12 +29,15 @@ const fr = {
 		},
 	},
 	textInputPlaceholder: "Commencez à écrire…",
-	correctTextButton: "Corriger le texte",
-	inputDetails: {
+	textDetails: {
 		stats: {
 			characters: "{0} caractère{{s}}",
 			words: "{0} mot{{s}}",
 			lines: "{0} ligne{{s}}",
+		},
+		actions: {
+			correct: "Corriger le texte",
+			copy: "Copier",
 		},
 	},
 } satisfies Translation;

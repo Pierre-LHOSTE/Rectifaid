@@ -8,21 +8,4 @@
         padding: 16px;
     }
 
-    button {
-        display: inline-block;
-    }
-
-    #input-details {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    #input-details-stats {
-        display: flex;
-        flex-direction: row;
-        gap: 8px;
-        padding: 0 8px;
-    }
 }
