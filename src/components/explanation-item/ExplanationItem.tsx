@@ -1,7 +1,7 @@
 import type { ExplanationType } from "@/types/explanations";
 import { IconArrowRight, IconBulbFilled } from "@tabler/icons-react";
 import { theme, Typography } from "antd";
-import "./explanation-item.scss";
+import "./explanation-item.css";
 
 const { useToken } = theme;
 

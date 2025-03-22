@@ -1,6 +1,6 @@
 "use client";
 import { theme, Typography } from "antd";
-import "./text-output.scss";
+import "./text-output.css";
 import TextDetails from "../text-details/TextDetails";
 
 const { useToken } = theme;
@@ -10,6 +10,7 @@ export default function TextOutput({
 }: {
 	correctedText: string;
 }) {
+	console.log("🚀 ~ correctedText:", correctedText);
 	const { token } = useToken();
 
 	return (
@@ -20,7 +21,9 @@ export default function TextOutput({
 					borderColor: token.colorBorder,
 				}}
 			>
-				<Typography.Paragraph>{correctedText}</Typography.Paragraph>
+				<Typography.Paragraph style={{ whiteSpace: "preserve" }}>
+					{correctedText}
+				</Typography.Paragraph>
 			</div>
 			<TextDetails
 				details={[]}

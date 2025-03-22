@@ -1,0 +1,24 @@
+#root {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+#content {
+	height: 100%;
+
+	> .ant-splitter > .ant-splitter-panel > section {
+		display: flex;
+		flex-direction: row;
+		gap: 24px;
+		height: 100%;
+
+		> * {
+			flex: 1;
+		}
+	}
+
+	#top {
+		padding: 24px;
+	}
+}

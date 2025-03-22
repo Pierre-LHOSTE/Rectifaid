@@ -1,7 +1,7 @@
 "use client";
 import { useI18nContext } from "@/i18n/i18n-react";
 import { Input } from "antd";
-import "./text-input.scss";
+import "./text-input.css";
 import correctText from "@/server/correctText.action";
 import { useState } from "react";
 import { useOptionsStore } from "@/stores/options.store";
@@ -16,6 +16,7 @@ export default function TextInput() {
 
 	async function correct() {
 		const res = await correctText(text, selectedOptions);
+		console.log("🚀 ~ correct ~ res:", res);
 		if (res.correctedText) {
 			setResult(res);
 		}

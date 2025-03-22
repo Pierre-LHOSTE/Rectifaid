@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./layout.css";
 import type { ReactNode } from "react";
 import AntdLayout from "./antd";
 import Locale from "./i18n";
+import "overlayscrollbars/overlayscrollbars.css";
 
 export const metadata: Metadata = {
 	title: "Create Next App",

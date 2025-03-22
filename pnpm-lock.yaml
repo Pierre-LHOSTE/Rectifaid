@@ -32,6 +32,12 @@ importers:
       next:
         specifier: 15.2.3
         version: 15.2.3(@babel/core@7.26.10)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.86.0)
+      overlayscrollbars:
+        specifier: ^2.11.1
+        version: 2.11.1
+      overlayscrollbars-react:
+        specifier: ^0.5.6
+        version: 0.5.6(overlayscrollbars@2.11.1)(react@19.0.0)
       react:
         specifier: ^19.0.0
         version: 19.0.0
@@ -3503,6 +3509,15 @@ packages:
 
   os-browserify@0.3.0:
     resolution: {integrity: sha512-gjcpUc3clBf9+210TRaDWbf+rZZZEshZ+DlXMRCeAjp0xhTrnQsKHypIy1J3d5hKdUzj69t708EHtU8P6bUn0A==}
+
+  overlayscrollbars-react@0.5.6:
+    resolution: {integrity: sha512-E5To04bL5brn9GVCZ36SnfGanxa2I2MDkWoa4Cjo5wol7l+diAgi4DBc983V7l2nOk/OLJ6Feg4kySspQEGDBw==}
+    peerDependencies:
+      overlayscrollbars: ^2.0.0
+      react: '>=16.8.0'
+
+  overlayscrollbars@2.11.1:
+    resolution: {integrity: sha512-kogaNaBTIizRenQ2GTzt2cpkEH9B0nUBXseRxqQblH/YicJ3TaWuvn8E5TXPPfJCVoHYSgBYZzzva40kCERKHg==}
 
   p-limit@2.3.0:
     resolution: {integrity: sha512-//88mFWSJx8lxCzwdAABTJL2MyWB12+eIY7MDL2SqLmAkeKU9qxRvWuSyTjm3FUmpBEMuFfckAIqEaVGUDxb6w==}
@@ -8801,6 +8816,13 @@ snapshots:
       is-wsl: 2.2.0
 
   os-browserify@0.3.0: {}
+
+  overlayscrollbars-react@0.5.6(overlayscrollbars@2.11.1)(react@19.0.0):
+    dependencies:
+      overlayscrollbars: 2.11.1
+      react: 19.0.0
+
+  overlayscrollbars@2.11.1: {}
 
   p-limit@2.3.0:
     dependencies:

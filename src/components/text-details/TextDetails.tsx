@@ -1,5 +1,5 @@
 import { Button, Typography } from "antd";
-import "./text-details.scss";
+import "./text-details.css";
 
 export default function TextDetails({
 	details,

@@ -1,6 +1,6 @@
 "use client";
 import { theme, Typography } from "antd";
-import "./header.scss";
+import "./header.css";
 
 const { useToken } = theme;
 

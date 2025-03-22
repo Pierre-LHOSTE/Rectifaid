@@ -1,5 +1,5 @@
 import { Checkbox, type CheckboxChangeEvent, type GlobalToken, Typography, theme } from "antd";
-import "./card-select.scss";
+import "./card-select.css";
 import type { CategoryType, CategoryOptions } from "@/types/options";
 import { useOptionsStore } from "@/stores/options.store";
 import c from "classnames";

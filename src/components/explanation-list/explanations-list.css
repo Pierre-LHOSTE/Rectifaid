@@ -1,0 +1,6 @@
+#explanations-list {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding: 32px 24px;
+}

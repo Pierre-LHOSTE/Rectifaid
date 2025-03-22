@@ -1,7 +1,7 @@
 "use client";
 import { theme } from "antd";
 import CardSelect from "../card/CardSelect";
-import "./selector.scss";
+import "./selector.css";
 import { optionDefinitions } from "@/config/options";
 import { useI18nContext } from "@/i18n/i18n-react";
 
@@ -12,7 +12,7 @@ export default function Selector() {
 	const { LL } = useI18nContext();
 
 	return (
-		<div id="selector" style={{ borderColor: token.colorBorder }}>
+		<div id="selector">
 			<CardSelect
 				title={LL.card.minimal.title()}
 				description={LL.card.minimal.description()}
