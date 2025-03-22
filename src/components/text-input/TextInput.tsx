@@ -12,11 +12,13 @@ export default function TextInput() {
 	const { LL, locale } = useI18nContext();
 	const [text, setText] = useState("");
 	const { selectedOptions } = useOptionsStore();
-	const { setCorrectedText } = useResultStore();
+	const { setResult } = useResultStore();
 
 	async function correct() {
 		const res = await correctText(text, selectedOptions);
-		setCorrectedText(res.correctedText);
+		if (res.correctedText) {
+			setResult(res);
+		}
 	}
 
 	return (

@@ -1,19 +1,23 @@
 import type {} from "@/types/options";
 import { create } from "zustand";
-import type { ExplanationsType } from "@/types/explanations";
+import type { ExplanationType } from "@/types/explanations";
 
 interface StoreType {
-	correctedText: string;
-	setCorrectedText: (text: string) => void;
+	result: {
+		correctedText: string;
+		explanations: ExplanationType[];
+	};
 
-	explanations: ExplanationsType[];
-	setExplanations: (explanations: ExplanationsType[]) => void;
+	setResult: (result: {
+		correctedText: string;
+		explanations: ExplanationType[];
+	}) => void;
 }
 
 export const useResultStore = create<StoreType>((set) => ({
-	correctedText: "",
-	setCorrectedText: (text: string) => set({ correctedText: text }),
-
-	explanations: [],
-	setExplanations: (explanations: ExplanationsType[]) => set({ explanations }),
+	result: {
+		correctedText: "",
+		explanations: [],
+	},
+	setResult: (result) => set(() => ({ result })),
 }));

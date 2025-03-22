@@ -5,11 +5,16 @@ import TextInput from "@/components/text-input/TextInput";
 import { theme } from "antd";
 import "./root.scss";
 import TextOutput from "@/components/text-output/TextOutput";
+import ExplanationsList from "@/components/explanation-list/ExplanationsList";
+import { useResultStore } from "@/stores/result.store";
 
 const { useToken } = theme;
 
 export default function Home() {
 	const { token } = useToken();
+
+	const { result } = useResultStore();
+
 	return (
 		<div id="root" style={{ backgroundColor: token.colorBgContainer }}>
 			<Header />
@@ -18,10 +23,15 @@ export default function Home() {
 				<div id="content">
 					<section id="top">
 						<TextInput />
-						<TextOutput />
+						<TextOutput correctedText={result.correctedText} />
 					</section>
-					<section id="bottom">
-						<p>explanation</p>
+					<section
+						id="bottom"
+						style={{
+							borderColor: token.colorBorder,
+						}}
+					>
+						<ExplanationsList explanations={result.explanations} />
 					</section>
 				</div>
 			</div>

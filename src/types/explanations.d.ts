@@ -1,4 +1,4 @@
-export type ExplanationsType = {
+export type ExplanationType = {
 	from: string;
 	to: string;
 	why: string;

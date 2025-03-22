@@ -73,6 +73,9 @@ body {
 
 #bottom {
 	flex: 2;
+	border-top-width: 1px;
+	border-top-style: solid;
+	overflow-y: scroll;
 }
 
 #content > section > * {

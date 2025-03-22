@@ -1,13 +1,15 @@
 "use client";
 import { theme, Typography } from "antd";
-import { useResultStore } from "@/stores/result.store";
 import "./text-output.scss";
 import TextDetails from "../text-details/TextDetails";
 
 const { useToken } = theme;
 
-export default function TextOutput() {
-	const { correctedText } = useResultStore();
+export default function TextOutput({
+	correctedText,
+}: {
+	correctedText: string;
+}) {
 	const { token } = useToken();
 
 	return (
