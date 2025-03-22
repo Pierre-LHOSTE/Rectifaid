@@ -20,5 +20,6 @@
 
 	#top {
 		padding: 24px;
+		overflow: hidden;
 	}
 }

@@ -68,7 +68,8 @@ Here is the text to process:
 ${text}
 </text>
 
-Ensure that every correction is clearly explained in the “explanations” array. If no changes were necessary, return the text as is with an empty explanations array.`;
+Ensure that every correction is clearly explained in the “explanations” array. If no changes were necessary, return the text as is with an empty explanations array.
+Do not forget to respond in the same language as the original text.`;
 
 	return prompt;
 }

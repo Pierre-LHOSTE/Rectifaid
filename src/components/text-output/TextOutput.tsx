@@ -2,6 +2,7 @@
 import { theme, Typography } from "antd";
 import "./text-output.css";
 import TextDetails from "../text-details/TextDetails";
+import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 
 const { useToken } = theme;
 
@@ -15,7 +16,8 @@ export default function TextOutput({
 
 	return (
 		<div id="text-output">
-			<div
+			<OverlayScrollbarsComponent
+				defer
 				id="output"
 				style={{
 					borderColor: token.colorBorder,
@@ -24,7 +26,7 @@ export default function TextOutput({
 				<Typography.Paragraph style={{ whiteSpace: "preserve" }}>
 					{correctedText}
 				</Typography.Paragraph>
-			</div>
+			</OverlayScrollbarsComponent>
 			<TextDetails
 				details={[]}
 				actions={[
