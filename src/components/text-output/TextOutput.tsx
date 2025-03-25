@@ -4,6 +4,7 @@ import "./text-output.css";
 import TextDetails from "../text-details/TextDetails";
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 import { diffChars } from "diff";
+import {} from "react";
 
 const { useToken } = theme;
 
@@ -15,42 +16,52 @@ export default function TextOutput({
 	correctedText: string;
 }) {
 	const { token } = useToken();
-
 	const diff = diffChars(originalText ?? "", correctedText ?? "");
+
+	const renderDiffText = () => {
+		return diff.map((part, index) => {
+			if (part.removed) {
+				return (
+					<span
+						key={index}
+						className="removed-indicator"
+						style={{
+							height: token.fontSize,
+							backgroundColor: token.colorError,
+						}}
+					>
+						{/* biome-ignore lint/nursery/useConsistentCurlyBraces: Zero width space */}
+						{"\u2060"}
+					</span>
+				);
+			}
+
+			const color = part.added ? token.colorSuccess : token.colorTextBase;
+			return (
+				<span key={index} style={{ color }}>
+					{part.value}
+				</span>
+			);
+		});
+	};
 
 	return (
 		<div id="text-output">
-			<OverlayScrollbarsComponent
-				defer
-				id="output"
-				style={{
-					borderColor: token.colorBorder,
-				}}
-			>
-				<Typography.Paragraph style={{ whiteSpace: "preserve" }}>
-					{diff.map((part, index) => {
-						const color = part.added
-							? token.colorSuccess
-							: part.removed
-								? token.colorError
-								: token.colorTextBase;
-
-						return (
-							// biome-ignore lint/suspicious/noArrayIndexKey: Order doesn't change here
-							<span key={index} style={{ color }}>
-								{part.value}
-							</span>
-						);
-					})}
-				</Typography.Paragraph>
+			<OverlayScrollbarsComponent defer id="output" style={{ borderColor: token.colorBorder }}>
+				<div id="text-output-group">
+					<Typography.Paragraph style={{ whiteSpace: "pre-wrap" }} id="visual-output">
+						{renderDiffText()}
+					</Typography.Paragraph>
+					<Typography.Paragraph style={{ whiteSpace: "pre-wrap" }} id="original-output">
+						{correctedText}
+					</Typography.Paragraph>
+				</div>
 			</OverlayScrollbarsComponent>
 			<TextDetails
 				details={[]}
 				actions={[
 					{
-						action: () => {
-							navigator.clipboard.writeText(correctedText);
-						},
+						action: () => navigator.clipboard.writeText(correctedText),
 						label: "Copy",
 						type: "default",
 					},

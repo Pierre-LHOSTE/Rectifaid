@@ -12,7 +12,6 @@ export default function ExplanationsList({
 	return (
 		<OverlayScrollbarsComponent defer id="explanations-list">
 			{explanations.map((explanation, index) => (
-				// biome-ignore lint/suspicious/noArrayIndexKey: The order doesn't change
 				<div key={index}>
 					<ExplanationItem explanation={explanation} />
 					{index < explanations.length - 1 && <Divider />}

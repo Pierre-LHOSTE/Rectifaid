@@ -1,15 +1,35 @@
 #text-output {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
 
-    
-    #output {
-        border-style: solid;
-        border-width: 1px;
-        border-radius: 6px;
-        padding: 16px;
-        flex: 1;
-    }
+	#output {
+		border-style: solid;
+		border-width: 1px;
+		border-radius: 6px;
+		padding: 16px;
+		flex: 1;
+	}
 
+	.removed-indicator {
+		display: inline-block;
+		width: 2px;
+		position: absolute;
+	}
+
+	#text-output-group {
+		position: relative;
+
+		#visual-output {
+			position: absolute;
+			top: 0;
+			user-select: none;
+			pointer-events: none;
+		}
+
+		#original-output {
+			color: transparent;
+			z-index: 2;
+		}
+	}
 }
