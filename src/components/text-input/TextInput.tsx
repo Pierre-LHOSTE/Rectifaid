@@ -3,22 +3,21 @@ import { useI18nContext } from "@/i18n/i18n-react";
 import { Input } from "antd";
 import "./text-input.css";
 import correctText from "@/server/correctText.action";
-import { useState } from "react";
 import { useOptionsStore } from "@/stores/options.store";
 import { useResultStore } from "@/stores/result.store";
 import TextDetails from "../text-details/TextDetails";
 
 export default function TextInput() {
 	const { LL, locale } = useI18nContext();
-	const [text, setText] = useState("");
 	const { selectedOptions } = useOptionsStore();
 	const { setResult } = useResultStore();
+	const { input, setInput, setOldInput } = useResultStore();
 
 	async function correct() {
-		const res = await correctText(text, selectedOptions);
-		console.log("🚀 ~ correct ~ res:", res);
+		const res = await correctText(input, selectedOptions);
 		if (res.correctedText) {
 			setResult(res);
+			setOldInput(input);
 		}
 	}
 
@@ -30,22 +29,22 @@ export default function TextInput() {
 				style={{
 					resize: "none",
 				}}
-				value={text}
+				value={input}
 				onChange={(e) => {
-					setText(e.target.value);
+					setInput(e.target.value);
 				}}
 			/>
 			<TextDetails
 				details={[
-					LL.textDetails.stats.characters(text.length),
+					LL.textDetails.stats.characters(input.length),
 					LL.textDetails.stats.words(
-						text
+						input
 							.split("\n")
 							.join(" ")
 							.split(" ")
 							.filter((l) => l).length
 					),
-					LL.textDetails.stats.lines(text.split("\n").length),
+					LL.textDetails.stats.lines(input.split("\n").length),
 				]}
 				actions={[
 					{

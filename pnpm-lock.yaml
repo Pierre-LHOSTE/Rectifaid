@@ -20,6 +20,9 @@ importers:
       '@tabler/icons-react':
         specifier: ^3.31.0
         version: 3.31.0(react@19.0.0)
+      '@types/diff':
+        specifier: ^7.0.1
+        version: 7.0.1
       ai:
         specifier: ^4.2.0
         version: 4.2.0(react@19.0.0)(zod@3.24.2)
@@ -29,6 +32,9 @@ importers:
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
+      diff:
+        specifier: ^7.0.0
+        version: 7.0.0
       next:
         specifier: 15.2.3
         version: 15.2.3(@babel/core@7.26.10)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.86.0)
@@ -1773,6 +1779,9 @@ packages:
   '@types/diff-match-patch@1.0.36':
     resolution: {integrity: sha512-xFdR6tkm0MWvBfO8xXCSsinYxHcqkQUlcHeSpMC2ukzOb6lwQAfDmW+Qt0AvlGd8HpsS28qKsB+oPeJn9I39jg==}
 
+  '@types/diff@7.0.1':
+    resolution: {integrity: sha512-R/BHQFripuhW6XPXy05hIvXJQdQ4540KnTvEFHSLjXfHYM41liOLKgIJEyYYiQe796xpaMHfe4Uj/p7Uvng2vA==}
+
   '@types/doctrine@0.0.9':
     resolution: {integrity: sha512-eOIHzCUSH7SMfonMG1LsC2f8vxBFtho6NGBznK41R84YzPuvSBzrhEps33IsQiOW9+VL6NQ9DbjQJznk/S4uRA==}
 
@@ -2521,6 +2530,10 @@ packages:
 
   diff@4.0.2:
     resolution: {integrity: sha512-58lmxKSA4BNyLz+HHMUzlOEpg09FV+ev6ZMe3vJihgdxzgcwZ8VoEEPmALCZG9LmqfVoNMMKpttIYTVG6uDY7A==}
+    engines: {node: '>=0.3.1'}
+
+  diff@7.0.0:
+    resolution: {integrity: sha512-PJWHUb1RFevKCwaFA9RlG5tCd+FO5iRh9A8HEtkmBH2Li03iJriB6m6JIN4rGz3K3JLawI7/veA1xzRKP6ISBw==}
     engines: {node: '>=0.3.1'}
 
   diffie-hellman@5.0.3:
@@ -6681,6 +6694,8 @@ snapshots:
 
   '@types/diff-match-patch@1.0.36': {}
 
+  '@types/diff@7.0.1': {}
+
   '@types/doctrine@0.0.9': {}
 
   '@types/eslint-scope@3.7.7':
@@ -7571,6 +7586,8 @@ snapshots:
   diff-sequences@29.6.3: {}
 
   diff@4.0.2: {}
+
+  diff@7.0.0: {}
 
   diffie-hellman@5.0.3:
     dependencies:

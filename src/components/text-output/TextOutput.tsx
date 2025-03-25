@@ -3,16 +3,20 @@ import { theme, Typography } from "antd";
 import "./text-output.css";
 import TextDetails from "../text-details/TextDetails";
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
+import { diffChars } from "diff";
 
 const { useToken } = theme;
 
 export default function TextOutput({
+	originalText,
 	correctedText,
 }: {
+	originalText: string;
 	correctedText: string;
 }) {
-	console.log("🚀 ~ correctedText:", correctedText);
 	const { token } = useToken();
+
+	const diff = diffChars(originalText ?? "", correctedText ?? "");
 
 	return (
 		<div id="text-output">
@@ -24,7 +28,20 @@ export default function TextOutput({
 				}}
 			>
 				<Typography.Paragraph style={{ whiteSpace: "preserve" }}>
-					{correctedText}
+					{diff.map((part, index) => {
+						const color = part.added
+							? token.colorSuccess
+							: part.removed
+								? token.colorError
+								: token.colorTextBase;
+
+						return (
+							// biome-ignore lint/suspicious/noArrayIndexKey: Order doesn't change here
+							<span key={index} style={{ color }}>
+								{part.value}
+							</span>
+						);
+					})}
 				</Typography.Paragraph>
 			</OverlayScrollbarsComponent>
 			<TextDetails
