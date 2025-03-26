@@ -125,6 +125,14 @@ type RootTranslation = {
 	 * L​o​a​d​i​n​g​…
 	 */
 	loading: string
+	/**
+	 * T​e​x​t​ ​c​o​p​i​e​d​ ​t​o​ ​c​l​i​p​b​o​a​r​d
+	 */
+	successCopy: string
+	/**
+	 * E​r​r​o​r​ ​c​o​p​y​i​n​g​ ​t​e​x​t
+	 */
+	errorCopy: string
 }
 
 export type TranslationFunctions = {
@@ -236,6 +244,14 @@ export type TranslationFunctions = {
 	 * Loading…
 	 */
 	loading: () => LocalizedString
+	/**
+	 * Text copied to clipboard
+	 */
+	successCopy: () => LocalizedString
+	/**
+	 * Error copying text
+	 */
+	errorCopy: () => LocalizedString
 }
 
 export type Formatters = {}

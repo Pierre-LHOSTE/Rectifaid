@@ -1,37 +1,37 @@
 .explanation-item {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
 
-    .ant-typography {
-        margin: 0;
-    }
-    
-    .explanation-comparaison > span  {
-        display: flex;
-        flex-direction: row;
-        gap: 8px;
-        align-items: center;
+	.ant-typography {
+		margin: 0;
+	}
 
-        > span {
-            border-radius: 6px;
-            padding: 4px 8px;
-        }
-    }
+	.explanation-comparaison > span {
+		display: flex;
+		flex-direction: row;
+		gap: 8px;
+		align-items: center;
 
-    .explanation {
-        padding: 0 4px;
-    }
+		> span {
+			border-radius: 6px;
+			padding: 4px 8px;
+		}
+	}
 
-    .tip {
-        display: flex;
-        flex-direction: row;
-        gap: 8px;
-        padding: 0 8px;
-        align-items: center;
+	.explanation {
+		padding: 0 4px;
+	}
 
-        svg {
-            flex-shrink: 0;
-        }
-    }
+	.tip {
+		display: flex;
+		flex-direction: row;
+		gap: 8px;
+		padding: 0 8px;
+		align-items: center;
+
+		svg {
+			flex-shrink: 0;
+		}
+	}
 }

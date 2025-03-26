@@ -6,45 +6,76 @@ import { Splitter, theme } from "antd";
 import ExplanationsList from "@/components/explanation-list/ExplanationsList";
 import TextOutput from "@/components/text-output/TextOutput";
 import { useResultStore } from "@/stores/result.store";
+import { useEffect } from "react";
+import { useSettingsStore } from "@/stores/settings.store";
 
 const { useToken } = theme;
 
 export default function Home() {
 	const { token } = useToken();
-
 	const { result, oldInput, startTime, endTime } = useResultStore();
+	const { isMobile, setIsMobile } = useSettingsStore();
+
+	useEffect(() => {
+		const handleResize = () => {
+			setIsMobile(window.innerWidth < 768);
+		};
+		handleResize();
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
 
 	return (
 		<div id="root" style={{ backgroundColor: token.colorBgContainer }}>
 			<Header />
-			<div id="app">
-				<Splitter>
-					<Splitter.Panel style={{ minWidth: "380px" }} defaultSize={400}>
+			<div id="app" style={{ display: "flex", flexDirection: isMobile ? "column-reverse" : "row" }}>
+				{isMobile ? (
+					<>
 						<Selector />
-					</Splitter.Panel>
-					<Splitter.Panel>
 						<div id="content">
-							<Splitter layout="vertical">
-								<Splitter.Panel defaultSize="60%">
-									<section id="top">
-										<TextInput />
-										<TextOutput
-											originalText={oldInput}
-											correctedText={result.correctedText}
-											startTime={startTime}
-											endTime={endTime}
-										/>
-									</section>
-								</Splitter.Panel>
-								<Splitter.Panel>
-									<section id="bottom">
-										<ExplanationsList explanations={result.explanations} />
-									</section>
-								</Splitter.Panel>
-							</Splitter>
+							<section id="top" style={{ flexDirection: "column" }}>
+								<TextInput />
+								<TextOutput
+									originalText={oldInput}
+									correctedText={result.correctedText}
+									startTime={startTime}
+									endTime={endTime}
+								/>
+							</section>
+							<section id="bottom">
+								<ExplanationsList explanations={result.explanations} />
+							</section>
 						</div>
-					</Splitter.Panel>
-				</Splitter>
+					</>
+				) : (
+					<Splitter>
+						<Splitter.Panel style={{ minWidth: "380px" }} defaultSize={400}>
+							<Selector />
+						</Splitter.Panel>
+						<Splitter.Panel>
+							<div id="content">
+								<Splitter layout="vertical">
+									<Splitter.Panel defaultSize="60%">
+										<section id="top" style={{ flexDirection: "row" }}>
+											<TextInput />
+											<TextOutput
+												originalText={oldInput}
+												correctedText={result.correctedText}
+												startTime={startTime}
+												endTime={endTime}
+											/>
+										</section>
+									</Splitter.Panel>
+									<Splitter.Panel>
+										<section id="bottom">
+											<ExplanationsList explanations={result.explanations} />
+										</section>
+									</Splitter.Panel>
+								</Splitter>
+							</div>
+						</Splitter.Panel>
+					</Splitter>
+				)}
 			</div>
 		</div>
 	);

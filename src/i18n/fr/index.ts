@@ -41,6 +41,8 @@ const fr = {
 		},
 	},
 	loading: "Chargement…",
+	successCopy: "Texte copié",
+	errorCopy: "Erreur lors de la copie du texte",
 } satisfies Translation;
 
 export default fr;

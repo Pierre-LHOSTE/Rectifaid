@@ -1,6 +1,7 @@
 import { Button, Typography } from "antd";
 import "./text-details.css";
 import type { TablerIconType } from "@/types/icon";
+import { Fragment } from "react";
 
 export default function TextDetails({
 	details,
@@ -18,12 +19,12 @@ export default function TextDetails({
 	return (
 		<div className="text-details">
 			<div>
-				<Typography.Text type="secondary">
+				<Typography.Text type="secondary" ellipsis>
 					{details.map((detail, index) => (
-						<span key={index}>
-							<Typography.Text type="secondary">{detail}</Typography.Text>
+						<Fragment key={index}>
+							{detail}
 							{index < details.length - 1 && " • "}
-						</span>
+						</Fragment>
 					))}
 				</Typography.Text>
 			</div>

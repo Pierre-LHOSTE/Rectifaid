@@ -40,6 +40,8 @@ const en = {
 		},
 	},
 	loading: "Loading…",
+	successCopy: "Text copied to clipboard",
+	errorCopy: "Error copying text",
 } satisfies BaseTranslation;
 
 export default en;
