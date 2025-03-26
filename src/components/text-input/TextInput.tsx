@@ -11,11 +11,14 @@ export default function TextInput() {
 	const { LL, locale } = useI18nContext();
 	const { selectedOptions } = useOptionsStore();
 	const { setResult } = useResultStore();
-	const { input, setInput, setOldInput } = useResultStore();
+	const { input, setInput, setOldInput, setStartTime, setEndTime } = useResultStore();
 
 	async function correct() {
+		setStartTime(Date.now().valueOf());
+		setEndTime(0);
 		const res = await correctText(input, selectedOptions);
 		if (res.correctedText) {
+			setEndTime(Date.now().valueOf());
 			setResult(res);
 			setOldInput(input);
 		}

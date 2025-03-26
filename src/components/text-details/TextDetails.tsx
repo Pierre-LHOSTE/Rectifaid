@@ -1,5 +1,6 @@
 import { Button, Typography } from "antd";
 import "./text-details.css";
+import type { TablerIconType } from "@/types/icon";
 
 export default function TextDetails({
 	details,
@@ -10,6 +11,7 @@ export default function TextDetails({
 		action: () => void;
 		label: string;
 		type: "primary" | "default";
+		icon?: TablerIconType;
 	}[];
 }) {
 	return (
@@ -27,7 +29,12 @@ export default function TextDetails({
 
 			<div>
 				{actions.map((action, index) => (
-					<Button key={index} type={action.type} onClick={action.action}>
+					<Button
+						key={index}
+						type={action.type}
+						onClick={action.action}
+						icon={action.icon ? <action.icon size={16} /> : undefined}
+					>
 						{action.label}
 					</Button>
 				))}

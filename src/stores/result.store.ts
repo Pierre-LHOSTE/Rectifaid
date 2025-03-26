@@ -9,6 +9,8 @@ interface StoreType {
 		correctedText: string;
 		explanations: ExplanationType[];
 	};
+	startTime: number;
+	endTime: number;
 
 	setInput: (input: string) => void;
 	setOldInput: (oldInput: string) => void;
@@ -16,6 +18,8 @@ interface StoreType {
 		correctedText: string;
 		explanations: ExplanationType[];
 	}) => void;
+	setStartTime: (startTime: number) => void;
+	setEndTime: (endTime: number) => void;
 }
 
 export const useResultStore = create<StoreType>((set) => ({
@@ -25,8 +29,12 @@ export const useResultStore = create<StoreType>((set) => ({
 		correctedText: "",
 		explanations: [],
 	},
+	startTime: 0,
+	endTime: 0,
 
 	setInput: (input) => set(() => ({ input })),
 	setOldInput: (oldInput) => set(() => ({ oldInput })),
 	setResult: (result) => set(() => ({ result })),
+	setStartTime: (startTime) => set(() => ({ startTime })),
+	setEndTime: (endTime) => set(() => ({ endTime })),
 }));

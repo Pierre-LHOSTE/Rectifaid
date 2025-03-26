@@ -12,7 +12,7 @@ const { useToken } = theme;
 export default function Home() {
 	const { token } = useToken();
 
-	const { input, result, oldInput } = useResultStore();
+	const { result, oldInput, startTime, endTime } = useResultStore();
 
 	return (
 		<div id="root" style={{ backgroundColor: token.colorBgContainer }}>
@@ -28,7 +28,12 @@ export default function Home() {
 								<Splitter.Panel defaultSize="60%">
 									<section id="top">
 										<TextInput />
-										<TextOutput originalText={oldInput} correctedText={result.correctedText} />
+										<TextOutput
+											originalText={oldInput}
+											correctedText={result.correctedText}
+											startTime={startTime}
+											endTime={endTime}
+										/>
 									</section>
 								</Splitter.Panel>
 								<Splitter.Panel>
