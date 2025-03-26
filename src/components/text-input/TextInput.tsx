@@ -6,22 +6,26 @@ import correctText from "@/server/correctText.action";
 import { useOptionsStore } from "@/stores/options.store";
 import { useResultStore } from "@/stores/result.store";
 import TextDetails from "../text-details/TextDetails";
+import { useTransition } from "react";
 
 export default function TextInput() {
 	const { LL, locale } = useI18nContext();
 	const { selectedOptions } = useOptionsStore();
 	const { setResult } = useResultStore();
 	const { input, setInput, setOldInput, setStartTime, setEndTime } = useResultStore();
+	const [isPending, startTransition] = useTransition();
 
-	async function correct() {
+	function correct() {
 		setStartTime(Date.now().valueOf());
-		setEndTime(0);
-		const res = await correctText(input, selectedOptions);
-		if (res.correctedText) {
-			setEndTime(Date.now().valueOf());
-			setResult(res);
-			setOldInput(input);
-		}
+		setEndTime(-1);
+		startTransition(async () => {
+			const res = await correctText(input, selectedOptions);
+			if (res.correctedText) {
+				setEndTime(Date.now().valueOf());
+				setResult(res);
+				setOldInput(input);
+			}
+		});
 	}
 
 	return (
@@ -54,6 +58,7 @@ export default function TextInput() {
 						action: correct,
 						label: LL.textDetails.actions.correct(),
 						type: "primary",
+						loading: isPending,
 					},
 				]}
 			/>

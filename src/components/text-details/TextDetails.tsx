@@ -12,6 +12,7 @@ export default function TextDetails({
 		label: string;
 		type: "primary" | "default";
 		icon?: TablerIconType;
+		loading?: boolean;
 	}[];
 }) {
 	return (
@@ -34,6 +35,7 @@ export default function TextDetails({
 						type={action.type}
 						onClick={action.action}
 						icon={action.icon ? <action.icon size={16} /> : undefined}
+						loading={action.loading}
 					>
 						{action.label}
 					</Button>

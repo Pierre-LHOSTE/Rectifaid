@@ -121,6 +121,10 @@ type RootTranslation = {
 			copy: string
 		}
 	}
+	/**
+	 * L​o​a​d​i​n​g​…
+	 */
+	loading: string
 }
 
 export type TranslationFunctions = {
@@ -228,6 +232,10 @@ export type TranslationFunctions = {
 			copy: () => LocalizedString
 		}
 	}
+	/**
+	 * Loading…
+	 */
+	loading: () => LocalizedString
 }
 
 export type Formatters = {}

@@ -75,7 +75,9 @@ export default function TextOutput({
 							.filter((l) => l).length
 					),
 					LL.textDetails.stats.lines(correctedText.split("\n").length),
-					startTime > 0 && endTime > 0 ? `${((endTime - startTime) / 1000).toFixed(1)}s` : "",
+					startTime >= 0 && endTime >= 0
+						? `${((endTime - startTime) / 1000).toFixed(1)}s`
+						: LL.loading(),
 				]}
 				actions={[
 					{

@@ -39,6 +39,7 @@ const en = {
 			copy: "Copy",
 		},
 	},
+	loading: "Loading…",
 } satisfies BaseTranslation;
 
 export default en;

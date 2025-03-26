@@ -40,6 +40,7 @@ const fr = {
 			copy: "Copier",
 		},
 	},
+	loading: "Chargement…",
 } satisfies Translation;
 
 export default fr;
