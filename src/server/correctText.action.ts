@@ -18,6 +18,12 @@ export default async function correctText(text: string, options: SelectedOptions
 		};
 	}
 
+	if (session.user?.tier !== "any") {
+		return {
+			error: "This feature is not currently available.",
+		};
+	}
+
 	const prompt = generatePrompt(text, options);
 
 	const result = await generateObject({

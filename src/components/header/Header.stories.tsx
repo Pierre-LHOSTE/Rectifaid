@@ -12,7 +12,7 @@ const meta = {
 	},
 	decorators: [
 		(Story) => (
-			<div style={{ backgroundColor: "white" }}>
+			<div style={{}}>
 				<Story />
 			</div>
 		),
