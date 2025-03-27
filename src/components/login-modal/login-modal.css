@@ -1,0 +1,19 @@
+#login-modal {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding-top: 12px;
+	position: relative;
+
+	#last-used {
+		position: absolute;
+		top: 0;
+		right: 4px;
+		font-size: 12px;
+		transform: translateY(-50%);
+		padding: 0 8px;
+		border-width: 1px;
+		border-style: solid;
+		border-radius: 4px;
+	}
+}

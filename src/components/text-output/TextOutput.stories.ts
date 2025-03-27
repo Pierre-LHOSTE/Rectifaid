@@ -15,6 +15,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
 	args: {
-		correctedText: "Test",
+		originalText: "Original text",
+		correctedText: "Corrected text",
+		startTime: 0,
+		endTime: 10,
 	},
 };

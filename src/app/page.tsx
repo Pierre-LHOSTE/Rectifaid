@@ -6,15 +6,29 @@ import { Splitter, theme } from "antd";
 import ExplanationsList from "@/components/explanation-list/ExplanationsList";
 import TextOutput from "@/components/text-output/TextOutput";
 import { useResultStore } from "@/stores/result.store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSettingsStore } from "@/stores/settings.store";
+import { getUser } from "@/lib/auth-session";
+import LoginModal from "@/components/login-modal/LoginModal";
 
 const { useToken } = theme;
 
 export default function Home() {
 	const { token } = useToken();
 	const { result, oldInput, startTime, endTime } = useResultStore();
-	const { isMobile, setIsMobile } = useSettingsStore();
+	const { isMobile, setIsMobile, setShowLoginModal } = useSettingsStore();
+	const [user, setUser] = useState<Awaited<ReturnType<typeof getUser>>>(undefined);
+
+	useEffect(() => {
+		const fetchUser = async () => {
+			const userData = await getUser();
+			if (!userData) {
+				setShowLoginModal(true);
+			}
+			setUser(userData);
+		};
+		fetchUser();
+	}, []);
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -27,7 +41,8 @@ export default function Home() {
 
 	return (
 		<div id="root" style={{ backgroundColor: token.colorBgContainer }}>
-			<Header />
+			<Header user={user} />
+			<LoginModal />
 			<div id="app" style={{ display: "flex", flexDirection: isMobile ? "column-reverse" : "row" }}>
 				{isMobile ? (
 					<>

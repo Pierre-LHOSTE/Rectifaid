@@ -1,6 +1,6 @@
 "use client";
 import { useI18nContext } from "@/i18n/i18n-react";
-import { Input } from "antd";
+import { Input, message } from "antd";
 import "./text-input.css";
 import correctText from "@/server/correctText.action";
 import { useOptionsStore } from "@/stores/options.store";
@@ -8,18 +8,31 @@ import { useResultStore } from "@/stores/result.store";
 import TextDetails from "../text-details/TextDetails";
 import { useTransition } from "react";
 
+const { useMessage } = message;
+
 export default function TextInput() {
 	const { LL, locale } = useI18nContext();
 	const { selectedOptions } = useOptionsStore();
 	const { setResult } = useResultStore();
 	const { input, setInput, setOldInput, setStartTime, setEndTime } = useResultStore();
 	const [isPending, startTransition] = useTransition();
+	const [messageApi, contextHolder] = useMessage();
 
 	function correct() {
 		setStartTime(Date.now().valueOf());
 		setEndTime(-1);
 		startTransition(async () => {
 			const res = await correctText(input, selectedOptions);
+
+			if ("error" in res) {
+				messageApi.open({
+					type: "error",
+					content: res.error,
+					duration: 2,
+				});
+				return;
+			}
+
 			if (res.correctedText) {
 				setEndTime(Date.now().valueOf());
 				setResult(res);
@@ -30,6 +43,7 @@ export default function TextInput() {
 
 	return (
 		<div id="text-input">
+			{contextHolder}
 			<Input.TextArea
 				lang={locale}
 				placeholder={LL.textInputPlaceholder()}

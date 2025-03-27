@@ -1,11 +1,53 @@
 #header {
 	width: 100%;
 	border-bottom-width: 1px;
+	box-sizing: border-box;
 	border-bottom-style: solid;
-	padding: 24px 32px;
+	padding: 16px 32px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 75px;
 
 	h1 {
 		font-size: 18px;
 		margin: 0;
+	}
+
+	#user-profile {
+		--size: 32px;
+		> .ant-dropdown-trigger {
+			padding: 4px 12px 4px 8px;
+			box-sizing: border-box;
+			display: flex;
+			height: auto;
+			flex: 1;
+
+			img {
+				width: var(--size);
+				height: var(--size);
+				border-radius: 50%;
+			}
+
+			#no-image {
+				width: var(--size);
+				height: var(--size);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+		}
+	}
+}
+
+#header-dropdown {
+	#user-plan {
+		display: flex;
+		flex-direction: column;
+		max-width: 250px;
+
+		span {
+			margin: 0 !important;
+		}
 	}
 }

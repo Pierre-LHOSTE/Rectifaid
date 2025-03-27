@@ -40,9 +40,29 @@ const fr = {
 			copy: "Copier",
 		},
 	},
-	loading: "Chargement…",
-	successCopy: "Texte copié",
-	errorCopy: "Erreur lors de la copie du texte",
+	copy: {
+		success: "Copié dans le presse-papier",
+		error: "Erreur lors de la copie du texte",
+	},
+	basic: {
+		loading: "Chargement…",
+		cancel: "Annuler",
+	},
+	profile: {
+		loginTitle: "Bienvenue !",
+		loginDescription: "Connectez-vous ou créez un compte avec une des options ci-dessous",
+		loginButton: "Se connecter",
+		logout: "Déconnexion",
+		oauth: "Se connecter avec {provider}",
+		lastUsed: "Dernier utilisé",
+	},
+	plan: {
+		free: "Gratuit",
+		basic: "Basique",
+		premium: "Premium",
+		upgradeButton: "Mettre à niveau",
+		upgradeDescription: "Mettez à niveau pour supprimer les limitations",
+	},
 } satisfies Translation;
 
 export default fr;

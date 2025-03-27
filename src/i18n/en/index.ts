@@ -39,9 +39,29 @@ const en = {
 			copy: "Copy",
 		},
 	},
-	loading: "Loading…",
-	successCopy: "Text copied to clipboard",
-	errorCopy: "Error copying text",
+	copy: {
+		success: "Text copied to clipboard",
+		error: "Error copying text",
+	},
+	basic: {
+		loading: "Loading…",
+		cancel: "Cancel",
+	},
+	profile: {
+		loginTitle: "Welcome user!",
+		loginDescription: "Sign in or create an account with one of the options below",
+		loginButton: "Sign in",
+		logout: "Logout",
+		oauth: "Sign in with {provider:string}",
+		lastUsed: "Last used",
+	},
+	plan: {
+		free: "Free",
+		basic: "Basic",
+		premium: "Premium",
+		upgradeButton: "Upgrade",
+		upgradeDescription: "Upgrade to remove limitations",
+	},
 } satisfies BaseTranslation;
 
 export default en;

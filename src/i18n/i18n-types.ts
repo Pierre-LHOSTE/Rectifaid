@@ -121,18 +121,75 @@ type RootTranslation = {
 			copy: string
 		}
 	}
-	/**
-	 * L​o​a​d​i​n​g​…
-	 */
-	loading: string
-	/**
-	 * T​e​x​t​ ​c​o​p​i​e​d​ ​t​o​ ​c​l​i​p​b​o​a​r​d
-	 */
-	successCopy: string
-	/**
-	 * E​r​r​o​r​ ​c​o​p​y​i​n​g​ ​t​e​x​t
-	 */
-	errorCopy: string
+	copy: {
+		/**
+		 * T​e​x​t​ ​c​o​p​i​e​d​ ​t​o​ ​c​l​i​p​b​o​a​r​d
+		 */
+		success: string
+		/**
+		 * E​r​r​o​r​ ​c​o​p​y​i​n​g​ ​t​e​x​t
+		 */
+		error: string
+	}
+	basic: {
+		/**
+		 * L​o​a​d​i​n​g​…
+		 */
+		loading: string
+		/**
+		 * C​a​n​c​e​l
+		 */
+		cancel: string
+	}
+	profile: {
+		/**
+		 * W​e​l​c​o​m​e​ ​u​s​e​r​!
+		 */
+		loginTitle: string
+		/**
+		 * S​i​g​n​ ​i​n​ ​o​r​ ​c​r​e​a​t​e​ ​a​n​ ​a​c​c​o​u​n​t​ ​w​i​t​h​ ​o​n​e​ ​o​f​ ​t​h​e​ ​o​p​t​i​o​n​s​ ​b​e​l​o​w
+		 */
+		loginDescription: string
+		/**
+		 * S​i​g​n​ ​i​n
+		 */
+		loginButton: string
+		/**
+		 * L​o​g​o​u​t
+		 */
+		logout: string
+		/**
+		 * S​i​g​n​ ​i​n​ ​w​i​t​h​ ​{​p​r​o​v​i​d​e​r​}
+		 * @param {string} provider
+		 */
+		oauth: RequiredParams<'provider'>
+		/**
+		 * L​a​s​t​ ​u​s​e​d
+		 */
+		lastUsed: string
+	}
+	plan: {
+		/**
+		 * F​r​e​e
+		 */
+		free: string
+		/**
+		 * B​a​s​i​c
+		 */
+		basic: string
+		/**
+		 * P​r​e​m​i​u​m
+		 */
+		premium: string
+		/**
+		 * U​p​g​r​a​d​e
+		 */
+		upgradeButton: string
+		/**
+		 * U​p​g​r​a​d​e​ ​t​o​ ​r​e​m​o​v​e​ ​l​i​m​i​t​a​t​i​o​n​s
+		 */
+		upgradeDescription: string
+	}
 }
 
 export type TranslationFunctions = {
@@ -240,18 +297,74 @@ export type TranslationFunctions = {
 			copy: () => LocalizedString
 		}
 	}
-	/**
-	 * Loading…
-	 */
-	loading: () => LocalizedString
-	/**
-	 * Text copied to clipboard
-	 */
-	successCopy: () => LocalizedString
-	/**
-	 * Error copying text
-	 */
-	errorCopy: () => LocalizedString
+	copy: {
+		/**
+		 * Text copied to clipboard
+		 */
+		success: () => LocalizedString
+		/**
+		 * Error copying text
+		 */
+		error: () => LocalizedString
+	}
+	basic: {
+		/**
+		 * Loading…
+		 */
+		loading: () => LocalizedString
+		/**
+		 * Cancel
+		 */
+		cancel: () => LocalizedString
+	}
+	profile: {
+		/**
+		 * Welcome user!
+		 */
+		loginTitle: () => LocalizedString
+		/**
+		 * Sign in or create an account with one of the options below
+		 */
+		loginDescription: () => LocalizedString
+		/**
+		 * Sign in
+		 */
+		loginButton: () => LocalizedString
+		/**
+		 * Logout
+		 */
+		logout: () => LocalizedString
+		/**
+		 * Sign in with {provider}
+		 */
+		oauth: (arg: { provider: string }) => LocalizedString
+		/**
+		 * Last used
+		 */
+		lastUsed: () => LocalizedString
+	}
+	plan: {
+		/**
+		 * Free
+		 */
+		free: () => LocalizedString
+		/**
+		 * Basic
+		 */
+		basic: () => LocalizedString
+		/**
+		 * Premium
+		 */
+		premium: () => LocalizedString
+		/**
+		 * Upgrade
+		 */
+		upgradeButton: () => LocalizedString
+		/**
+		 * Upgrade to remove limitations
+		 */
+		upgradeDescription: () => LocalizedString
+	}
 }
 
 export type Formatters = {}

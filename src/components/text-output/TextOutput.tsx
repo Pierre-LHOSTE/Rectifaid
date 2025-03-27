@@ -74,12 +74,12 @@ export default function TextOutput({
 				document.execCommand("copy");
 				document.body.removeChild(textArea);
 			}
-			messageApi.success(LL.successCopy());
+			messageApi.success(LL.copy.success());
 		} catch (error) {
 			console.error("Erreur lors de la copie : ", error);
 			messageApi.open({
 				type: "error",
-				content: LL.errorCopy(),
+				content: LL.copy.error(),
 				duration: 2,
 			});
 		}
@@ -111,7 +111,7 @@ export default function TextOutput({
 					LL.textDetails.stats.lines(correctedText.split("\n").length),
 					startTime >= 0 && endTime >= 0
 						? `${((endTime - startTime) / 1000).toFixed(1)}s`
-						: LL.loading(),
+						: LL.basic.loading(),
 				]}
 				actions={[
 					{
