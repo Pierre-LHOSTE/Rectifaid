@@ -17,6 +17,10 @@
 			border-radius: 6px;
 			padding: 4px 8px;
 		}
+
+		> svg {
+			flex-shrink: 0;
+		}
 	}
 
 	.explanation {
