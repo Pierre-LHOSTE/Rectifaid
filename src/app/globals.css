@@ -47,8 +47,7 @@ body {
 	flex-direction: column;
 	height: 100dvh;
 	overflow: hidden;
-	padding-bottom: env(safe-area-inset-bottom);
-	padding-top: env(safe-area-inset-top);
+	background-color: black;
 }
 
 #app {

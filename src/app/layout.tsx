@@ -19,7 +19,7 @@ export const viewport: Viewport = {
 	height: "device-height",
 	viewportFit: "cover",
 	themeColor: [
-		{ media: "(prefers-color-scheme: dark)", color: "#000000" },
+		{ media: "(prefers-color-scheme: dark)", color: "#1a1d23" },
 		{ media: "(prefers-color-scheme: light)", color: "#ffffff" },
 	],
 };
