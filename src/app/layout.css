@@ -27,3 +27,22 @@
 		display: flex;
 	}
 }
+
+.mobile {
+	#content {
+		> section {
+			&:first-child {
+				flex: 3;
+			}
+
+			&:last-child {
+				flex: 2;
+			}
+			overflow: hidden;
+
+			&#top > div {
+				overflow: hidden;
+			}
+		}
+	}
+}

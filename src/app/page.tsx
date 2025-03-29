@@ -40,7 +40,11 @@ export default function Home() {
 	}, []);
 
 	return (
-		<div id="root" style={{ backgroundColor: token.colorBgContainer }}>
+		<div
+			id="root"
+			style={{ backgroundColor: token.colorBgContainer }}
+			className={isMobile ? "mobile" : ""}
+		>
 			<Header user={user} />
 			<LoginModal />
 			<div id="app" style={{ display: "flex", flexDirection: isMobile ? "column-reverse" : "row" }}>
