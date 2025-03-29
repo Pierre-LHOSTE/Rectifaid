@@ -14,7 +14,7 @@ export default async function correctText(text: string, options: SelectedOptions
 	const session = await auth.api.getSession({ headers: await headers() });
 	if (!session) return { error: "Please login to use this feature." };
 
-	const user = await prisma.user.findUnique({ where: { id: session.user.id } });
+	let user = await prisma.user.findUnique({ where: { id: session.user.id } });
 	if (!user) return { error: "User not found." };
 
 	const now = new Date();
@@ -23,7 +23,7 @@ export default async function correctText(text: string, options: SelectedOptions
 	oneMonthAgo.setMonth(now.getMonth() - 1);
 
 	if (lastReset < oneMonthAgo) {
-		await prisma.user.update({
+		user = await prisma.user.update({
 			where: { id: user.id },
 			data: { tokensUsed: 0, lastReset: now },
 		});
