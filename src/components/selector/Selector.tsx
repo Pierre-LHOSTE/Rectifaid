@@ -20,7 +20,7 @@ export default function Selector() {
 			{isMobile ? (
 				<div id="mobile-selector">
 					<Button type="primary" size="large" onClick={() => setShowOptionsModal(true)}>
-						Open
+						{LL.card.openSelect()}
 					</Button>
 					<Modal open={showOptionsModal} onCancel={() => setShowOptionsModal(false)}>
 						<div id="selector">

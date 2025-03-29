@@ -27,6 +27,7 @@ const fr = {
 			title: "Modifications majeures",
 			description: "Ici, on transforme le texte de manière plus significative",
 		},
+		openSelect: "Ouvrir les options",
 	},
 	textInputPlaceholder: "Commencez à écrire…",
 	textDetails: {

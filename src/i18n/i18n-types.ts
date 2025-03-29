@@ -87,6 +87,10 @@ type RootTranslation = {
 			 */
 			description: string
 		}
+		/**
+		 * O​p​e​n​ ​o​p​t​i​o​n​s
+		 */
+		openSelect: string
 	}
 	/**
 	 * S​t​a​r​t​ ​t​y​p​i​n​g​…
@@ -266,6 +270,10 @@ export type TranslationFunctions = {
 			 */
 			description: () => LocalizedString
 		}
+		/**
+		 * Open options
+		 */
+		openSelect: () => LocalizedString
 	}
 	/**
 	 * Start typing…

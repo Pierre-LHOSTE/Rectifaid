@@ -26,6 +26,7 @@ const en = {
 			title: "Heavy modifications",
 			description: "These changes significantly alter the text, improving its structure and style",
 		},
+		openSelect: "Open options",
 	},
 	textInputPlaceholder: "Start typing…",
 	textDetails: {
