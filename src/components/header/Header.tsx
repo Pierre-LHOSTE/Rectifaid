@@ -62,7 +62,10 @@ export default function Header({
 
 	return (
 		<header id="header" style={{ borderColor: token.colorBorder }}>
-			<Typography.Title>AI-REWRITE</Typography.Title>
+			<Typography.Title>
+				<Image src="/icon.svg" alt="Logo" width={42} height={42} />
+				Rectifaid
+			</Typography.Title>
 			<div id="user-profile">
 				{user ? (
 					<Dropdown
