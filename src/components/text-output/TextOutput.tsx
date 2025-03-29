@@ -116,7 +116,7 @@ export default function TextOutput({
 				actions={[
 					{
 						action: () => copyToClipboard(correctedText),
-						label: "Copy",
+						label: LL.textDetails.actions.copy(),
 						type: "default",
 						icon: IconCopy,
 					},
