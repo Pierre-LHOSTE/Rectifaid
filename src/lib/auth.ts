@@ -10,6 +10,14 @@ export const auth = betterAuth({
 				type: "string",
 				nullable: false,
 			},
+			tokensUsed: {
+				type: "number",
+				nullable: false,
+			},
+			lastReset: {
+				type: "date",
+				nullable: false,
+			},
 		},
 	},
 	database: prismaAdapter(prisma, {
