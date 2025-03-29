@@ -39,6 +39,8 @@ export const Connected: Story = {
 			updatedAt: new Date(),
 			image: "https://vingt-douze.com/apple-icon.png?acf2eb774d94040e",
 			tier: "free",
+			tokensUsed: 0,
+			lastReset: new Date(),
 		},
 	},
 };
@@ -54,6 +56,8 @@ export const ConnectedNoImage: Story = {
 			updatedAt: new Date(),
 			image: null,
 			tier: "free",
+			tokensUsed: 0,
+			lastReset: new Date(),
 		},
 	},
 };
@@ -69,6 +73,8 @@ export const Basic: Story = {
 			updatedAt: new Date(),
 			image: "https://vingt-douze.com/apple-icon.png?acf2eb774d94040e",
 			tier: "basic",
+			tokensUsed: 0,
+			lastReset: new Date(),
 		},
 	},
 };
@@ -84,6 +90,8 @@ export const Premium: Story = {
 			updatedAt: new Date(),
 			image: "https://vingt-douze.com/apple-icon.png?acf2eb774d94040e",
 			tier: "premium",
+			tokensUsed: 0,
+			lastReset: new Date(),
 		},
 	},
 };
