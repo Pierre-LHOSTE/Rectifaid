@@ -22,7 +22,16 @@ export default function Selector() {
 					<Button type="primary" size="large" onClick={() => setShowOptionsModal(true)}>
 						{LL.card.openSelect()}
 					</Button>
-					<Modal open={showOptionsModal} onCancel={() => setShowOptionsModal(false)}>
+					<Modal
+						open={showOptionsModal}
+						onCancel={() => setShowOptionsModal(false)}
+						footer={
+							<Button type="primary" size="large" onClick={() => setShowOptionsModal(false)}>
+								{LL.basic.close()}
+							</Button>
+						}
+						title={LL.card.title()}
+					>
 						<div id="selector">
 							<CardSelect
 								title={LL.card.minimal.title()}

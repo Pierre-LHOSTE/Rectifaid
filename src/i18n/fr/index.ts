@@ -28,6 +28,7 @@ const fr = {
 			description: "Ici, on transforme le texte de manière plus significative",
 		},
 		openSelect: "Ouvrir les options",
+		title: "Sélectionner le type de correction",
 	},
 	textInputPlaceholder: "Commencez à écrire…",
 	textDetails: {
@@ -48,6 +49,7 @@ const fr = {
 	basic: {
 		loading: "Chargement…",
 		cancel: "Annuler",
+		close: "Fermer",
 	},
 	profile: {
 		loginTitle: "Bienvenue !",

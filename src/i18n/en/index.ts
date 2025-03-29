@@ -27,6 +27,7 @@ const en = {
 			description: "These changes significantly alter the text, improving its structure and style",
 		},
 		openSelect: "Open options",
+		title: "Select the type of correction",
 	},
 	textInputPlaceholder: "Start typing…",
 	textDetails: {
@@ -47,6 +48,7 @@ const en = {
 	basic: {
 		loading: "Loading…",
 		cancel: "Cancel",
+		close: "Close",
 	},
 	profile: {
 		loginTitle: "Welcome user!",

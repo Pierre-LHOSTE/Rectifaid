@@ -91,6 +91,10 @@ type RootTranslation = {
 		 * O​p​e​n​ ​o​p​t​i​o​n​s
 		 */
 		openSelect: string
+		/**
+		 * S​e​l​e​c​t​ ​t​h​e​ ​t​y​p​e​ ​o​f​ ​c​o​r​r​e​c​t​i​o​n
+		 */
+		title: string
 	}
 	/**
 	 * S​t​a​r​t​ ​t​y​p​i​n​g​…
@@ -144,6 +148,10 @@ type RootTranslation = {
 		 * C​a​n​c​e​l
 		 */
 		cancel: string
+		/**
+		 * C​l​o​s​e
+		 */
+		close: string
 	}
 	profile: {
 		/**
@@ -274,6 +282,10 @@ export type TranslationFunctions = {
 		 * Open options
 		 */
 		openSelect: () => LocalizedString
+		/**
+		 * Select the type of correction
+		 */
+		title: () => LocalizedString
 	}
 	/**
 	 * Start typing…
@@ -324,6 +336,10 @@ export type TranslationFunctions = {
 		 * Cancel
 		 */
 		cancel: () => LocalizedString
+		/**
+		 * Close
+		 */
+		close: () => LocalizedString
 	}
 	profile: {
 		/**
