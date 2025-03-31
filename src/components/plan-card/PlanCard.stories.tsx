@@ -28,5 +28,6 @@ export const Default: Story = {
 		description: "Increase your token up to ten times compared to free plan.",
 		price: "$10/month",
 		features: ["Feature 1", "Feature 2", "Feature 3"],
+		featureTitle: "Features",
 	},
 };
