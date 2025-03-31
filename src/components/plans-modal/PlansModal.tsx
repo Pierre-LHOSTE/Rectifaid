@@ -15,6 +15,7 @@ export default function PlansModal() {
 	useEffect(() => {
 		const fetchPlans = async () => {
 			const plans = await syncPlans();
+			console.log("🚀 ~ fetchPlans ~ plans:", plans);
 			if (plans) {
 				const basicPlan = plans.data.find(
 					(plan: {
@@ -46,29 +47,35 @@ export default function PlansModal() {
 			}}
 		>
 			<div id="plans-container">
-				<PlanCard
-					title={LL.plans.free.title()}
-					description={LL.plans.free.description()}
-					price="$0/month"
-					features={LL.plans.free.features().split(", ")}
-					featureTitle={LL.plans.free.featureTitle()}
-				/>
-				<PlanCard
-					title={LL.plans.basic.title()}
-					description={LL.plans.basic.description()}
-					price="$10/month"
-					features={LL.plans.basic.features().split(", ")}
-					featureTitle={LL.plans.basic.featureTitle()}
-					url={basicUrl}
-				/>
-				<PlanCard
-					title={LL.plans.premium.title()}
-					description={LL.plans.premium.description()}
-					price="$20/month"
-					features={LL.plans.premium.features().split(", ")}
-					featureTitle={LL.plans.premium.featureTitle()}
-					url={premiumUrl}
-				/>
+				{basicUrl && premiumUrl ? (
+					<>
+						<PlanCard
+							title={LL.plans.free.title()}
+							description={LL.plans.free.description()}
+							price="$0/month"
+							features={LL.plans.free.features().split(", ")}
+							featureTitle={LL.plans.free.featureTitle()}
+						/>
+						<PlanCard
+							title={LL.plans.basic.title()}
+							description={LL.plans.basic.description()}
+							price="$10/month"
+							features={LL.plans.basic.features().split(", ")}
+							featureTitle={LL.plans.basic.featureTitle()}
+							url={basicUrl}
+						/>
+						<PlanCard
+							title={LL.plans.premium.title()}
+							description={LL.plans.premium.description()}
+							price="$20/month"
+							features={LL.plans.premium.features().split(", ")}
+							featureTitle={LL.plans.premium.featureTitle()}
+							url={premiumUrl}
+						/>
+					</>
+				) : (
+					<div className="loading">{LL.basic.loading()}</div>
+				)}
 			</div>
 		</Modal>
 	);
