@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { useSettingsStore } from "@/stores/settings.store";
 import { getUser } from "@/lib/auth-session";
 import LoginModal from "@/components/login-modal/LoginModal";
+import PlansModal from "@/components/plans-modal/PlansModal";
 
 const { useToken } = theme;
 
@@ -47,6 +48,7 @@ export default function Home() {
 		>
 			<Header user={user} />
 			<LoginModal />
+			<PlansModal />
 			<div id="app" style={{ display: "flex", flexDirection: isMobile ? "column-reverse" : "row" }}>
 				{isMobile ? (
 					<>

@@ -64,6 +64,27 @@ const en = {
 		premium: "Premium",
 		upgradeButton: "Upgrade",
 		upgradeDescription: "Upgrade to remove limitations",
+		getPlanButton: "Get plan",
+	},
+	plans: {
+		free: {
+			title: "Free plan",
+			description: "Free plan with limited features.",
+			features: "Limited to 1250 tokens per month",
+			featureTitle: "Features",
+		},
+		basic: {
+			title: "Basic plan",
+			description: "Increased limits up to 12500 tokens per month with a new more powerful model.",
+			features: "Limited to 12500 tokens per month, A more powerful model",
+			featureTitle: "Everything in the free plan, plus",
+		},
+		premium: {
+			title: "Premium plan",
+			description: "Increased limits up to 125000 tokens per month",
+			features: "Limited to 125000 tokens per month",
+			featureTitle: "Everything in the basic plan, plus",
+		},
 	},
 } satisfies BaseTranslation;
 

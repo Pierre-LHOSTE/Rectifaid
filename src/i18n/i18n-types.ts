@@ -201,6 +201,66 @@ type RootTranslation = {
 		 * U​p​g​r​a​d​e​ ​t​o​ ​r​e​m​o​v​e​ ​l​i​m​i​t​a​t​i​o​n​s
 		 */
 		upgradeDescription: string
+		/**
+		 * G​e​t​ ​p​l​a​n
+		 */
+		getPlanButton: string
+	}
+	plans: {
+		free: {
+			/**
+			 * F​r​e​e​ ​p​l​a​n
+			 */
+			title: string
+			/**
+			 * F​r​e​e​ ​p​l​a​n​ ​w​i​t​h​ ​l​i​m​i​t​e​d​ ​f​e​a​t​u​r​e​s​.
+			 */
+			description: string
+			/**
+			 * L​i​m​i​t​e​d​ ​t​o​ ​1​2​5​0​ ​t​o​k​e​n​s​ ​p​e​r​ ​m​o​n​t​h
+			 */
+			features: string
+			/**
+			 * F​e​a​t​u​r​e​s
+			 */
+			featureTitle: string
+		}
+		basic: {
+			/**
+			 * B​a​s​i​c​ ​p​l​a​n
+			 */
+			title: string
+			/**
+			 * I​n​c​r​e​a​s​e​d​ ​l​i​m​i​t​s​ ​u​p​ ​t​o​ ​1​2​5​0​0​ ​t​o​k​e​n​s​ ​p​e​r​ ​m​o​n​t​h​ ​w​i​t​h​ ​a​ ​n​e​w​ ​m​o​r​e​ ​p​o​w​e​r​f​u​l​ ​m​o​d​e​l​.
+			 */
+			description: string
+			/**
+			 * L​i​m​i​t​e​d​ ​t​o​ ​1​2​5​0​0​ ​t​o​k​e​n​s​ ​p​e​r​ ​m​o​n​t​h​,​ ​A​ ​m​o​r​e​ ​p​o​w​e​r​f​u​l​ ​m​o​d​e​l
+			 */
+			features: string
+			/**
+			 * E​v​e​r​y​t​h​i​n​g​ ​i​n​ ​t​h​e​ ​f​r​e​e​ ​p​l​a​n​,​ ​p​l​u​s
+			 */
+			featureTitle: string
+		}
+		premium: {
+			/**
+			 * P​r​e​m​i​u​m​ ​p​l​a​n
+			 */
+			title: string
+			/**
+			 * I​n​c​r​e​a​s​e​d​ ​l​i​m​i​t​s​ ​u​p​ ​t​o​ ​1​2​5​0​0​0​ ​t​o​k​e​n​s​ ​p​e​r​ ​m​o​n​t​h
+			 */
+			description: string
+			/**
+			 * L​i​m​i​t​e​d​ ​t​o​ ​1​2​5​0​0​0​ ​t​o​k​e​n​s​ ​p​e​r​ ​m​o​n​t​h
+			 */
+			features: string
+			/**
+			 * E​v​e​r​y​t​h​i​n​g​ ​i​n​ ​t​h​e​ ​b​a​s​i​c​ ​p​l​a​n​,​ ​p​l​u​s
+			 */
+			featureTitle: string
+		}
 	}
 }
 
@@ -388,6 +448,66 @@ export type TranslationFunctions = {
 		 * Upgrade to remove limitations
 		 */
 		upgradeDescription: () => LocalizedString
+		/**
+		 * Get plan
+		 */
+		getPlanButton: () => LocalizedString
+	}
+	plans: {
+		free: {
+			/**
+			 * Free plan
+			 */
+			title: () => LocalizedString
+			/**
+			 * Free plan with limited features.
+			 */
+			description: () => LocalizedString
+			/**
+			 * Limited to 1250 tokens per month
+			 */
+			features: () => LocalizedString
+			/**
+			 * Features
+			 */
+			featureTitle: () => LocalizedString
+		}
+		basic: {
+			/**
+			 * Basic plan
+			 */
+			title: () => LocalizedString
+			/**
+			 * Increased limits up to 12500 tokens per month with a new more powerful model.
+			 */
+			description: () => LocalizedString
+			/**
+			 * Limited to 12500 tokens per month, A more powerful model
+			 */
+			features: () => LocalizedString
+			/**
+			 * Everything in the free plan, plus
+			 */
+			featureTitle: () => LocalizedString
+		}
+		premium: {
+			/**
+			 * Premium plan
+			 */
+			title: () => LocalizedString
+			/**
+			 * Increased limits up to 125000 tokens per month
+			 */
+			description: () => LocalizedString
+			/**
+			 * Limited to 125000 tokens per month
+			 */
+			features: () => LocalizedString
+			/**
+			 * Everything in the basic plan, plus
+			 */
+			featureTitle: () => LocalizedString
+		}
 	}
 }
 

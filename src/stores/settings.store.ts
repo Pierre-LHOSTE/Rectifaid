@@ -8,6 +8,8 @@ interface StoreType {
 	setShowOptionsModal: (showOptionsModal: boolean) => void;
 	showLoginModal: boolean;
 	setShowLoginModal: (showLoginModal: boolean) => void;
+	showPlansModal: boolean;
+	setShowPlansModal: (showPlansModal: boolean) => void;
 }
 
 export const useSettingsStore = create<StoreType>((set) => ({
@@ -17,4 +19,6 @@ export const useSettingsStore = create<StoreType>((set) => ({
 	setShowOptionsModal: (showOptionsModal) => set(() => ({ showOptionsModal: showOptionsModal })),
 	showLoginModal: false,
 	setShowLoginModal: (showLoginModal) => set(() => ({ showLoginModal: showLoginModal })),
+	showPlansModal: false,
+	setShowPlansModal: (showPlansModal) => set(() => ({ showPlansModal: showPlansModal })),
 }));

@@ -65,6 +65,28 @@ const fr = {
 		premium: "Premium",
 		upgradeButton: "Mettre à niveau",
 		upgradeDescription: "Mettez à niveau pour supprimer les limitations",
+		getPlanButton: "Obtenir",
+	},
+	plans: {
+		free: {
+			title: "Gratuit",
+			description: "Plan gratuit avec des fonctionnalités limitées.",
+			features: "Limité à 1250 jetons par mois",
+			featureTitle: "Caractéristiques",
+		},
+		basic: {
+			title: "Basique",
+			description:
+				"Limites augmentées jusqu'à 12500 jetons par mois avec un nouveau modèle plus puissant.",
+			features: "Limité à 12500 jetons par mois, Un modèle plus puissant",
+			featureTitle: "Tout ce qui est dans le plan gratuit, plus",
+		},
+		premium: {
+			title: "Premium",
+			description: "Limites augmentées jusqu'à 125000 jetons par mois",
+			features: "Limité à 125000 jetons par mois",
+			featureTitle: "Tout ce qui est dans le plan basique, plus",
+		},
 	},
 } satisfies Translation;
 
