@@ -1,42 +1,59 @@
 import { syncPlans } from "@/server/syncPlans";
 import { useSettingsStore } from "@/stores/settings.store";
-import { Modal } from "antd";
+import { Button, Modal } from "antd";
 import { useEffect, useState } from "react";
 import PlanCard from "../plan-card/PlanCard";
 import "./plans-modal.css";
 import { useI18nContext } from "@/i18n/i18n-react";
+import { useSession } from "@/lib/auth-client";
+import getCustomerPortal from "@/server/getCustomerPortal";
 
 export default function PlansModal() {
 	const { showPlansModal, setShowPlansModal } = useSettingsStore();
 	const { LL } = useI18nContext();
-	const [basicUrl, setBasicUrl] = useState<string>();
-	const [premiumUrl, setPremiumUrl] = useState<string>();
+	const [basicPlanId, setBasicPlanId] = useState<string>();
+	const [premiumPlanId, setPremiumPlanId] = useState<string>();
+	const [customerPortalUrl, setCustomerPortalUrl] = useState<string | null>(null);
+
+	const { data } = useSession();
+	const user = data?.user;
+
+	const tier = (user?.tier as "free" | "basic" | "premium") || "free";
 
 	useEffect(() => {
 		const fetchPlans = async () => {
 			const plans = await syncPlans();
-			console.log("🚀 ~ fetchPlans ~ plans:", plans);
+			const portalUrl = user?.customerId ? await getCustomerPortal(user.customerId) : null;
+
+			if (portalUrl?.url) setCustomerPortalUrl(portalUrl.url);
+
 			if (plans) {
-				const basicPlan = plans.data.find(
+				const basicPlan = plans.find(
 					(plan: {
-						attributes: { name: string; buy_now_url: string };
-					}) => plan?.attributes?.name === "Basic"
+						id: string;
+						name: string;
+						price: number | undefined;
+						variantId: string | undefined;
+					}) => plan.name === "Basic"
 				);
-				const premiumPlan = plans.data.find(
+				const premiumPlan = plans.find(
 					(plan: {
-						attributes: { name: string; buy_now_url: string };
-					}) => plan?.attributes?.name === "Premium"
+						id: string;
+						name: string;
+						price: number | undefined;
+						variantId: string | undefined;
+					}) => plan.name === "Premium"
 				);
 				if (basicPlan) {
-					setBasicUrl(basicPlan.attributes.buy_now_url);
+					setBasicPlanId(basicPlan.variantId);
 				}
 				if (premiumPlan) {
-					setPremiumUrl(premiumPlan.attributes.buy_now_url);
+					setPremiumPlanId(premiumPlan.variantId);
 				}
 			}
 		};
 		fetchPlans();
-	}, []);
+	}, [user]);
 
 	return (
 		<Modal
@@ -47,36 +64,48 @@ export default function PlansModal() {
 			}}
 		>
 			<div id="plans-container">
-				{basicUrl && premiumUrl ? (
+				{basicPlanId && premiumPlanId ? (
 					<>
 						<PlanCard
 							title={LL.plans.free.title()}
+							tier="free"
 							description={LL.plans.free.description()}
 							price="$0/month"
 							features={LL.plans.free.features().split(", ")}
 							featureTitle={LL.plans.free.featureTitle()}
+							id="free"
+							userTier={tier}
 						/>
 						<PlanCard
 							title={LL.plans.basic.title()}
+							tier="basic"
 							description={LL.plans.basic.description()}
 							price="$10/month"
 							features={LL.plans.basic.features().split(", ")}
 							featureTitle={LL.plans.basic.featureTitle()}
-							url={basicUrl}
+							id={basicPlanId}
+							userTier={tier}
 						/>
 						<PlanCard
 							title={LL.plans.premium.title()}
+							tier="premium"
 							description={LL.plans.premium.description()}
 							price="$20/month"
 							features={LL.plans.premium.features().split(", ")}
 							featureTitle={LL.plans.premium.featureTitle()}
-							url={premiumUrl}
+							id={premiumPlanId}
+							userTier={tier}
 						/>
 					</>
 				) : (
 					<div className="loading">{LL.basic.loading()}</div>
 				)}
 			</div>
+			{customerPortalUrl ? (
+				<Button type="link" href={customerPortalUrl} target="_blank">
+					{LL.plan.managePlanButton()}
+				</Button>
+			) : null}
 		</Modal>
 	);
 }

@@ -5,7 +5,7 @@ import type { getUser } from "@/lib/auth-session";
 import { useSettingsStore } from "@/stores/settings.store";
 import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
-import { IconLogout, IconRocket, IconUser } from "@tabler/icons-react";
+import { IconLogout, IconRocket, IconSettings, IconUser } from "@tabler/icons-react";
 import { useI18nContext } from "@/i18n/i18n-react";
 
 const { useToken } = theme;
@@ -31,8 +31,8 @@ export default function Header({
 	const items: MenuProps["items"] = [
 		{
 			key: "plans",
-			label: LL.plan.upgradeButton(),
-			icon: <IconRocket size={18} />,
+			label: user?.tier !== "free" ? LL.plan.managePlanButton() : LL.plan.upgradeButton(),
+			icon: user?.tier !== "free" ? <IconSettings size={18} /> : <IconRocket size={18} />,
 			onClick: () => {
 				setShowPlansModal(true);
 			},

@@ -1,6 +1,7 @@
+"use server";
 import { lemonSqueezySetup } from "@lemonsqueezy/lemonsqueezy.js";
 
-export function configureLemonSqueezy() {
+export async function configureLemonSqueezy() {
 	const requiredVars = [
 		"LEMONSQUEEZY_API_KEY",
 		"LEMONSQUEEZY_STORE_ID",

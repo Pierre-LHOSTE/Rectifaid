@@ -29,5 +29,8 @@ export const Default: Story = {
 		price: "$10/month",
 		features: ["Feature 1", "Feature 2", "Feature 3"],
 		featureTitle: "Features",
+		id: "id",
+		userTier: "basic",
+		tier: "free",
 	},
 };

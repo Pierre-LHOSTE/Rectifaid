@@ -65,6 +65,8 @@ const en = {
 		upgradeButton: "Upgrade",
 		upgradeDescription: "Upgrade to remove limitations",
 		getPlanButton: "Get plan",
+		activePlanButton: "Active",
+		managePlanButton: "Manage my subscription",
 	},
 	plans: {
 		free: {

@@ -1,7 +1,7 @@
 import { useI18nContext } from "@/i18n/i18n-react";
-import { signIn } from "@/lib/auth-client";
+import { signIn, useSession } from "@/lib/auth-client";
 import { useSettingsStore } from "@/stores/settings.store";
-import { Button, message, Modal, theme, Typography } from "antd";
+import { Button, Modal, Typography, message, theme } from "antd";
 import { useState } from "react";
 import "./login-modal.css";
 import {} from "@tabler/icons-react";
@@ -21,10 +21,12 @@ type ProviderType = (typeof PROVIDERS)[number]["id"];
 
 export default function LoginModal() {
 	const [loading, setLoading] = useState(false);
-	const { showLoginModal } = useSettingsStore();
+	const { showLoginModal, setShowLoginModal } = useSettingsStore();
 	const { LL } = useI18nContext();
 	const { token } = useToken();
 	const [messageApi, contextHolder] = useMessage();
+	const { data } = useSession();
+	const user = data?.user;
 
 	async function handleLogin(provider: ProviderType) {
 		try {
@@ -62,8 +64,20 @@ export default function LoginModal() {
 
 	const lastLoginProvider = localStorage.getItem("lastLoginProvider");
 
+	function handleClose() {
+		if (user) {
+			setShowLoginModal(false);
+		}
+	}
+
 	return (
-		<Modal open={showLoginModal} title={LL.profile.loginTitle()} footer={null} closable={false}>
+		<Modal
+			open={showLoginModal}
+			title={LL.profile.loginTitle()}
+			footer={null}
+			onCancel={handleClose}
+			onClose={handleClose}
+		>
 			{contextHolder}
 			<Typography.Paragraph>{LL.profile.loginDescription()}</Typography.Paragraph>
 			<div id="login-modal">

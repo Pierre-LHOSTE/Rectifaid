@@ -41,6 +41,7 @@ export const Connected: Story = {
 			tier: "free",
 			tokensUsed: 0,
 			lastReset: new Date(),
+			customerId: 0,
 		},
 	},
 };
@@ -58,6 +59,7 @@ export const ConnectedNoImage: Story = {
 			tier: "free",
 			tokensUsed: 0,
 			lastReset: new Date(),
+			customerId: 0,
 		},
 	},
 };
@@ -75,6 +77,7 @@ export const Basic: Story = {
 			tier: "basic",
 			tokensUsed: 0,
 			lastReset: new Date(),
+			customerId: 0,
 		},
 	},
 };
@@ -92,6 +95,7 @@ export const Premium: Story = {
 			tier: "premium",
 			tokensUsed: 0,
 			lastReset: new Date(),
+			customerId: 0,
 		},
 	},
 };

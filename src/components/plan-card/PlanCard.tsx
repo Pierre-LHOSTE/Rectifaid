@@ -1,32 +1,40 @@
 import { Button, Card, List, Typography } from "antd";
 import "./plan-card.css";
 import { useI18nContext } from "@/i18n/i18n-react";
-import { useSession } from "@/lib/auth-client";
+import { getCheckoutUrl } from "@/server/getCheckoutURL";
+import { useEffect, useState } from "react";
 
 export default function PlanCard({
 	title,
+	tier,
 	description,
 	price,
 	features,
-	url,
 	featureTitle,
+	id,
+	userTier,
 }: {
 	title: string;
+	tier: string;
 	description: string;
 	price: string;
 	features: string[];
-	url?: string;
 	featureTitle: string;
+	id: string;
+	userTier?: "free" | "basic" | "premium";
 }) {
 	const { LL } = useI18nContext();
-	const { data } = useSession();
-	const user = data?.user;
+	const [url, setUrl] = useState<string | null>(null);
 
-	if (!user) {
-		return null;
-	}
+	useEffect(() => {
+		async function fetchUrl() {
+			const url = id === "free" ? "" : ((await getCheckoutUrl(id)) ?? "");
+			setUrl(url);
+		}
+		fetchUrl();
+	}, []);
 
-	// const tier = user.tier;
+	const isActivePlan = userTier === tier;
 
 	return (
 		<Card
@@ -49,16 +57,18 @@ export default function PlanCard({
 				))}
 			</List>
 
-			<Button
-				type="primary"
-				style={{ marginTop: "10px" }}
-				href={`${url}
-
-			`}
-				target="_blank"
-			>
-				{LL.plan.getPlanButton()}
-			</Button>
+			{id !== "free" ? (
+				<Button
+					type="primary"
+					style={{ marginTop: "10px" }}
+					href={`${url}`}
+					loading={isActivePlan ? false : !url}
+					disabled={!url || isActivePlan}
+					target="_blank"
+				>
+					{isActivePlan ? LL.plan.activePlanButton() : LL.plan.getPlanButton()}
+				</Button>
+			) : null}
 		</Card>
 	);
 }

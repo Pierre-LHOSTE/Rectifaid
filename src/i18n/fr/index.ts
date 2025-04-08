@@ -66,6 +66,8 @@ const fr = {
 		upgradeButton: "Mettre à niveau",
 		upgradeDescription: "Mettez à niveau pour supprimer les limitations",
 		getPlanButton: "Obtenir",
+		activePlanButton: "Actif",
+		managePlanButton: "Gérer mon abonnement",
 	},
 	plans: {
 		free: {

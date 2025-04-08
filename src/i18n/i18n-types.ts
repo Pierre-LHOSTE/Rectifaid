@@ -205,6 +205,14 @@ type RootTranslation = {
 		 * G​e​t​ ​p​l​a​n
 		 */
 		getPlanButton: string
+		/**
+		 * A​c​t​i​v​e
+		 */
+		activePlanButton: string
+		/**
+		 * M​a​n​a​g​e​ ​m​y​ ​s​u​b​s​c​r​i​p​t​i​o​n
+		 */
+		managePlanButton: string
 	}
 	plans: {
 		free: {
@@ -452,6 +460,14 @@ export type TranslationFunctions = {
 		 * Get plan
 		 */
 		getPlanButton: () => LocalizedString
+		/**
+		 * Active
+		 */
+		activePlanButton: () => LocalizedString
+		/**
+		 * Manage my subscription
+		 */
+		managePlanButton: () => LocalizedString
 	}
 	plans: {
 		free: {
