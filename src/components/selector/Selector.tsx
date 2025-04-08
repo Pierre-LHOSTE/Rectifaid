@@ -5,15 +5,10 @@ import { optionDefinitions } from "@/config/options";
 import { useI18nContext } from "@/i18n/i18n-react";
 import { useSettingsStore } from "@/stores/settings.store";
 import { Button, Modal } from "antd";
-import { useEffect } from "react";
 
 export default function Selector() {
 	const { LL } = useI18nContext();
 	const { isMobile, setShowOptionsModal, showOptionsModal } = useSettingsStore();
-
-	useEffect(() => {
-		console.log(isMobile);
-	}, [isMobile]);
 
 	return (
 		<>

@@ -1,34 +1,39 @@
 "use client";
+import ExplanationsList from "@/components/explanation-list/ExplanationsList";
 import Header from "@/components/header/Header";
+import LoginModal from "@/components/login-modal/LoginModal";
+import PlansModal from "@/components/plans-modal/PlansModal";
 import Selector from "@/components/selector/Selector";
 import TextInput from "@/components/text-input/TextInput";
-import { Splitter, theme } from "antd";
-import ExplanationsList from "@/components/explanation-list/ExplanationsList";
 import TextOutput from "@/components/text-output/TextOutput";
-import { useResultStore } from "@/stores/result.store";
-import { useEffect, useState } from "react";
-import { useSettingsStore } from "@/stores/settings.store";
 import { getUser } from "@/lib/auth-session";
-import LoginModal from "@/components/login-modal/LoginModal";
+import checkUserTier from "@/server/checkUserTier";
+import { useResultStore } from "@/stores/result.store";
+import { useSettingsStore } from "@/stores/settings.store";
+import { Splitter, theme } from "antd";
+import { useEffect, useState } from "react";
 
 const { useToken } = theme;
 
 export default function Home() {
 	const { token } = useToken();
 	const { result, oldInput, startTime, endTime } = useResultStore();
-	const { isMobile, setIsMobile, setShowLoginModal } = useSettingsStore();
+	const { isMobile, setIsMobile, setShowLoginModal, showLoginModal } = useSettingsStore();
 	const [user, setUser] = useState<Awaited<ReturnType<typeof getUser>>>(undefined);
 
 	useEffect(() => {
 		const fetchUser = async () => {
 			const userData = await getUser();
-			if (!userData) {
+			if (userData) {
+				setShowLoginModal(false);
+			} else {
 				setShowLoginModal(true);
 			}
 			setUser(userData);
 		};
 		fetchUser();
-	}, []);
+		checkUserTier();
+	}, [showLoginModal]);
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -47,6 +52,7 @@ export default function Home() {
 		>
 			<Header user={user} />
 			<LoginModal />
+			<PlansModal />
 			<div id="app" style={{ display: "flex", flexDirection: isMobile ? "column-reverse" : "row" }}>
 				{isMobile ? (
 					<>

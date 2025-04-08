@@ -29,9 +29,10 @@ model User {
   updatedAt     DateTime
   sessions      Session[]
   accounts      Account[]
-  tier          String? @default("free")
-  tokensUsed    Int     @default(0)
-  lastReset     DateTime @default(now())
+  tier          String?   @default("free")
+  tokensUsed    Int       @default(0)
+  lastReset     DateTime  @default(now())
+  customerId    Int?
 
   @@unique([email])
   @@map("user")
@@ -80,4 +81,16 @@ model Verification {
   updatedAt  DateTime?
 
   @@map("verification")
+}
+
+model PendingSubscription {
+  id          String  @id @unique
+  userId      String?
+  userName    String
+  orderId     Int
+  productName String
+  userEmail   String
+  customerId  Int
+
+  @@map("pending_subscription")
 }

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import "./layout.css";
+import { Analytics } from "@vercel/analytics/react";
 import type { ReactNode } from "react";
 import AntdLayout from "./antd";
 import Locale from "./i18n";
@@ -32,6 +33,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body>
+				<Analytics />
 				<AntdLayout>
 					<Locale>{children}</Locale>
 				</AntdLayout>

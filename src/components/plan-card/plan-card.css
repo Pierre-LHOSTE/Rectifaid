@@ -1,0 +1,6 @@
+.plan-card {
+	.ant-card-head-title {
+		display: flex !important;
+		justify-content: space-between;
+	}
+}
