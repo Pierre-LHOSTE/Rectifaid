@@ -1,12 +1,13 @@
 "use client";
-import { Button, Dropdown, type MenuProps, theme, Typography } from "antd";
+import { Button, Dropdown, type MenuProps, Typography, theme } from "antd";
 import "./header.css";
+import { useI18nContext } from "@/i18n/i18n-react";
+import { authClient } from "@/lib/auth-client";
 import type { getUser } from "@/lib/auth-session";
 import { useSettingsStore } from "@/stores/settings.store";
-import { authClient } from "@/lib/auth-client";
-import Image from "next/image";
 import { IconLogout, IconRocket, IconSettings, IconUser } from "@tabler/icons-react";
-import { useI18nContext } from "@/i18n/i18n-react";
+import Image from "next/image";
+import Link from "next/link";
 
 const { useToken } = theme;
 
@@ -74,6 +75,16 @@ export default function Header({
 				<Image src="/icon.svg" alt="Logo" width={42} height={42} />
 				Rectifaid
 			</Typography.Title>
+			<nav>
+				<ul>
+					<li>
+						<Link href="/text">{"Text"}</Link>
+					</li>
+					<li>
+						<Link href="/image">{"Image"}</Link>
+					</li>
+				</ul>
+			</nav>
 			<div id="user-profile">
 				{user ? (
 					<Dropdown

@@ -46,7 +46,7 @@ export default async function correctText(text: string, options: SelectedOptions
 	const prompt = generatePrompt(text, options);
 
 	const result = await generateObject({
-		model: openai("o4-mini"),
+		model: openai("gpt-4.1-mini"),
 		prompt,
 		schema: z.object({
 			correctedText: z.string(),

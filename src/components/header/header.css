@@ -26,6 +26,8 @@
 	}
 
 	#user-profile {
+		min-width: 170px;
+		text-align: right;
 		--size: 32px;
 		> .ant-dropdown-trigger {
 			padding: 4px 12px 4px 8px;
@@ -46,6 +48,31 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
+			}
+		}
+	}
+
+	nav {
+		ul {
+			display: flex;
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			gap: 16px;
+
+			li {
+				a {
+					text-decoration: none;
+					font-size: 18px;
+
+					&:hover {
+						text-decoration: underline;
+					}
+
+					&.active {
+						text-decoration: underline;
+					}
+				}
 			}
 		}
 	}

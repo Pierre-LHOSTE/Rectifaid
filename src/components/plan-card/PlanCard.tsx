@@ -1,3 +1,4 @@
+"use client";
 import { Button, Card, List, Typography } from "antd";
 import "./plan-card.css";
 import { useI18nContext } from "@/i18n/i18n-react";

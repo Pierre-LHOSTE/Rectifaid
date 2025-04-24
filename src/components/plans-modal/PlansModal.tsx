@@ -1,3 +1,4 @@
+"use client";
 import { syncPlans } from "@/server/syncPlans";
 import { useSettingsStore } from "@/stores/settings.store";
 import { Button, Modal } from "antd";

@@ -6,6 +6,7 @@ import type { ReactNode } from "react";
 import AntdLayout from "./antd";
 import Locale from "./i18n";
 import "overlayscrollbars/overlayscrollbars.css";
+import ClientLayout from "./clientLayout";
 
 export const metadata: Metadata = {
 	title: "Rectifaid",
@@ -35,7 +36,9 @@ export default function RootLayout({
 			<body>
 				<Analytics />
 				<AntdLayout>
-					<Locale>{children}</Locale>
+					<Locale>
+						<ClientLayout>{children}</ClientLayout>
+					</Locale>
 				</AntdLayout>
 			</body>
 		</html>
