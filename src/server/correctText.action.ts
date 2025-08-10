@@ -1,13 +1,13 @@
 "use server";
+import { limits } from "@/config/limits";
+import { auth } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
 import type { SelectedOptionsType } from "@/types/options";
-import { generateObject } from "ai";
-import { z } from "zod";
 import generatePrompt from "@/utils/generatePrompt";
 import { openai } from "@ai-sdk/openai";
-import { auth } from "@/lib/auth";
+import { generateObject } from "ai";
 import { headers } from "next/headers";
-import { prisma } from "@/lib/prisma";
-import { limits } from "@/config/limits";
+import { z } from "zod";
 // import { mistral } from "@ai-sdk/mistral";
 
 export default async function correctText(text: string, options: SelectedOptionsType) {
@@ -46,7 +46,7 @@ export default async function correctText(text: string, options: SelectedOptions
 	const prompt = generatePrompt(text, options);
 
 	const result = await generateObject({
-		model: openai("o3-mini"),
+		model: openai("gpt-5-mini"),
 		prompt,
 		schema: z.object({
 			correctedText: z.string(),
