@@ -26,13 +26,13 @@ export default function Home() {
 			const userData = await getUser();
 			if (userData) {
 				setShowLoginModal(false);
+				checkUserTier();
 			} else {
 				setShowLoginModal(true);
 			}
 			setUser(userData);
 		};
 		fetchUser();
-		checkUserTier();
 	}, [showLoginModal]);
 
 	useEffect(() => {

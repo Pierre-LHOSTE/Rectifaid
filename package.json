@@ -36,7 +36,7 @@
 		"resend": "^4.2.0",
 		"sass": "^1.86.0",
 		"typesafe-i18n": "^5.26.2",
-		"zod": "^3.24.2",
+		"zod": "^4.0.17",
 		"zustand": "^5.0.3"
 	},
 	"devDependencies": {
