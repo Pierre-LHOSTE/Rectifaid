@@ -14,6 +14,10 @@ export default function TextDetails({
 		type: "primary" | "default";
 		icon?: TablerIconType;
 		loading?: boolean;
+		disabled?: boolean;
+		danger?: boolean;
+		onMouseEnter?: () => void;
+		onMouseLeave?: () => void;
 	}[];
 }) {
 	return (
@@ -37,6 +41,10 @@ export default function TextDetails({
 						onClick={action.action}
 						icon={action.icon ? <action.icon size={16} /> : undefined}
 						loading={action.loading}
+						disabled={action.disabled}
+						danger={action.danger}
+						onMouseEnter={action.onMouseEnter}
+						onMouseLeave={action.onMouseLeave}
 					>
 						{action.label}
 					</Button>

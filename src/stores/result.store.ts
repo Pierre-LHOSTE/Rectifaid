@@ -11,6 +11,7 @@ interface StoreType {
 	};
 	startTime: number;
 	endTime: number;
+	isStreaming: boolean;
 
 	setInput: (input: string) => void;
 	setOldInput: (oldInput: string) => void;
@@ -20,6 +21,7 @@ interface StoreType {
 	}) => void;
 	setStartTime: (startTime: number) => void;
 	setEndTime: (endTime: number) => void;
+	setIsStreaming: (isStreaming: boolean) => void;
 }
 
 export const useResultStore = create<StoreType>((set) => ({
@@ -31,10 +33,12 @@ export const useResultStore = create<StoreType>((set) => ({
 	},
 	startTime: 0,
 	endTime: 0,
+	isStreaming: false,
 
 	setInput: (input) => set(() => ({ input })),
 	setOldInput: (oldInput) => set(() => ({ oldInput })),
 	setResult: (result) => set(() => ({ result })),
 	setStartTime: (startTime) => set(() => ({ startTime })),
 	setEndTime: (endTime) => set(() => ({ endTime })),
+	setIsStreaming: (isStreaming) => set(() => ({ isStreaming })),
 }));

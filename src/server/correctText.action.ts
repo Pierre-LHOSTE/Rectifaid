@@ -10,6 +10,9 @@ import { headers } from "next/headers";
 import { z } from "zod";
 // import { mistral } from "@ai-sdk/mistral";
 
+// Increase timeout to 60s (Vercel Hobby max) to prevent timeouts
+export const maxDuration = 60;
+
 export default async function correctText(text: string, options: SelectedOptionsType) {
 	const session = await auth.api.getSession({ headers: await headers() });
 	if (!session) return { error: "Please login to use this feature." };
@@ -46,7 +49,7 @@ export default async function correctText(text: string, options: SelectedOptions
 	const prompt = generatePrompt(text, options);
 
 	const result = await generateObject({
-		model: openai("gpt-5-mini"),
+		model: openai("gpt-4o-mini"),
 		prompt,
 		schema: z.object({
 			correctedText: z.string(),

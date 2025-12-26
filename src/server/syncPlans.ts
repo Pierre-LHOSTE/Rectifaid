@@ -11,9 +11,15 @@ export async function syncPlans() {
 		include: ["variants"],
 	});
 
+	// Return empty array if products data is not available
+	if (!products.data?.data) {
+		console.warn("No products data available from LemonSqueezy");
+		return [];
+	}
+
 	const allVariants = products.data?.included as Variant["data"][] | undefined;
 
-	const data = products.data?.data.map((product) => {
+	const data = products.data.data.map((product) => {
 		const variantIds = product.relationships.variants.data as Variant["data"][];
 		const variants = allVariants?.filter((variant) => variantIds.some((v) => v.id === variant.id));
 		const defaultVariant = (variants ?? []).find(
