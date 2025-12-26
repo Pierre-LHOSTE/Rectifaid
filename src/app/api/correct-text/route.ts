@@ -36,6 +36,13 @@ export async function POST(req: Request) {
 
 		const { text, options } = validation.data;
 
+		// Convert arrays back to Sets (JSON doesn't support Set serialization)
+		const selectedOptions: SelectedOptionsType = {
+			minimal: new Set(options.minimal as any),
+			moderate: new Set(options.moderate as any),
+			heavy: new Set(options.heavy as any),
+		};
+
 		// 2. Authentication
 		const session = await auth.api.getSession({ headers: await headers() });
 		if (!session) {
@@ -83,7 +90,7 @@ export async function POST(req: Request) {
 		}
 
 		// 6. Generate prompt
-		const prompt = generatePrompt(text, options);
+		const prompt = generatePrompt(text, selectedOptions);
 
 		// 7. Stream OpenAI
 		const result = streamObject({
